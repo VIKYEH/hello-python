@@ -91,7 +91,6 @@
       font-size: 0.8rem;
       color: #94a3b8;
     }
-    /* Cover Slide */
     .cover-slide {
       background: linear-gradient(135deg, #06c755 0%, #047857 100%);
       color: white;
@@ -132,6 +131,10 @@
     .box-info {
       border-left-color: #3b82f6;
       background: #eff6ff;
+    }
+    .box-danger {
+      border-left-color: #ef4444;
+      background: #fef2f2;
     }
     .box h4 {
       margin-bottom: 0.3rem;
@@ -182,28 +185,28 @@
   <div class="slide">
     <div class="slide-header">
       <h2>1. 專題名稱、使用對象與想解決的問題</h2>
-      <p>專題名稱：LINE Bot AI 智慧助理（多輪對話記憶與雲端部署改善版）</p>
+      <p>專題名稱：LINE Bot AI 智慧助理（果斷極速決策改善版）</p>
     </div>
     <div class="slide-body">
       <div class="card-grid">
         <div class="box">
           <h4>🎯 專題定位與使用對象</h4>
           <ul>
-            <li><strong>使用對象</strong>：學生、上班族、一般 LINE 通訊軟體用戶。</li>
-            <li><strong>應用場景</strong>：隨手查資料、日常諮詢、寫作與翻譯，免裝額外 App。</li>
+            <li><strong>使用對象</strong>：經常面臨「選擇障礙」的學生、上班族與 LINE 用戶。</li>
+            <li><strong>應用場景</strong>：隨手決定「晚餐吃什麼」、即時諮詢，拒絕長篇廢話。</li>
           </ul>
         </div>
-        <div class="box box-info">
-          <h4>💡 想解決的核心問題</h4>
+        <div class="box box-danger">
+          <h4>⚠️ 解決第一版的真實致命缺點</h4>
           <ul>
-            <li><strong>痛點 1（便利性）</strong>：傳統 AI 需切換專用 App 或網頁，整合進 LINE 最直覺。</li>
-            <li><strong>痛點 2（第一版斷裂）</strong>：第一版為無狀態單次呼叫，無法記住前文代名詞。</li>
+            <li><strong>痛點 1（回太慢）</strong>：原本 AI 生成耗時超過 12 秒，在 LINE 等到不耐煩。</li>
+            <li><strong>痛點 2（話太多、不決策）</strong>：請 AI 決定晚餐，卻條列 5 項清單反問使用者自己選！</li>
           </ul>
         </div>
       </div>
       <div class="box" style="margin-top: 0.9rem; border-left-color: #06c755;">
-        <h4>🚀 改善版的核心目標</h4>
-        <p>升級為 <strong>Gemini Chat API 多輪對話記憶</strong>，依 LINE <code>user_id</code> 獨立隔離對話 Session，並提供完善的防呆提示與 Render 24 小時雲端部署！</p>
+        <h4>🚀 改善版核心：0.7 秒極速秒回 + 霸氣唯一決策</h4>
+        <p>切換為 <code>gemini-flash-lite-latest</code> 模型，嚴格限制 1~2 句話內直球對決，當尋求選擇時直接給出【唯一最佳答案】，省時又爽快！</p>
       </div>
     </div>
     <div class="slide-footer">
@@ -216,27 +219,27 @@
   <div class="slide">
     <div class="slide-header">
       <h2>2. 核心功能與對話範例</h2>
-      <p>結合 Google Gemini 3.7 Flash 大腦與 LINE SDK v3 模組化架構</p>
+      <p>0.7 秒秒回、乾脆話少、果斷二擇一/唯一拍板</p>
     </div>
     <div class="slide-body">
       <div class="card-grid">
         <div class="box">
-          <h4>🤖 核心功能特色</h4>
+          <h4>🤖 核心改善特色</h4>
           <ul>
-            <li><strong>上下文記憶</strong>：能理解「那裡、他、這件事」等前文代名詞。</li>
-            <li><strong>個人隔離 Session</strong>：每位好友擁有獨立記憶空間，互不混淆。</li>
-            <li><strong>快捷系統指令</strong>：<code>/help</code>、<code>/time</code>、<code>/ping</code> 秒回不耗額度。</li>
-            <li><strong><code>/reset</code> 重設記憶</strong>：隨時清除記憶重啟話題。</li>
+            <li><strong>極速 0.7 秒秒回</strong>：徹底消除等待延遲，即時對話體驗極佳。</li>
+            <li><strong>果斷替你做決定</strong>：不再拋回清單反問，直接指定唯一答案。</li>
+            <li><strong>言簡意賅</strong>：嚴格限制 1~2 句話內講完，零廢話。</li>
+            <li><strong>多輪記憶與防呆</strong>：支援 <code>/reset</code> 重設與空白輸入提示。</li>
           </ul>
         </div>
-        <div class="box box-info" style="font-size: 0.88rem;">
-          <h4>📱 真實對話範例</h4>
-          <p><strong>用戶</strong>：你好！我叫做小宇，我住在台北。<br>
-          <strong>AI</strong>：嗨小宇！很高興認識你！台北很棒呢！😊<br>
-          <strong>用戶</strong>：你知道我剛剛說我住哪裡嗎？<br>
-          <strong>AI</strong>：<strong>當然！你剛說你住在台北！🏙️</strong><br>
-          <strong>用戶</strong>：/reset<br>
-          <strong>AI</strong>：🔄 對話記憶已清除，我們重新開始吧！</p>
+        <div class="box box-info" style="font-size: 0.9rem;">
+          <h4>📱 真實對話對比</h4>
+          <p><strong>問</strong>：幫我決定晚餐吃什麼？</p>
+          <p style="color: #ef4444; text-decoration: line-through;">舊版 (12秒)：以下為您推薦5樣台北小吃：1.滷肉飯 2.蚵仔煎...你偏好哪種？</p>
+          <p style="color: #166534; font-weight: bold; margin-top: 0.4rem;">
+            新版 (0.76秒)：今晚吃牛肉麵！🍜 直截了當，不用謝。
+          </p>
+          <p style="margin-top: 0.3rem;"><strong>問</strong>：那飲料要配什麼？<br><strong>答</strong>：無糖四季春微冰！清爽解膩首選。🧋</p>
         </div>
       </div>
     </div>
@@ -264,16 +267,16 @@
         </thead>
         <tbody>
           <tr>
-            <td><strong>1. 正常使用</strong><br>(多輪記憶與指令)</td>
-            <td>①「我叫小宇」<br>②「我叫什麼名字？」<br>③ <code>/time</code></td>
-            <td>① 親切問候<br>② 準確回答小宇<br>③ 回傳伺服器時間</td>
-            <td>✅ 親切問好<br>✅ 正確回答「你是小宇！」<br>✅ 秒回伺服器時間</td>
+            <td><strong>1. 正常使用</strong><br>(果斷決策與多輪記憶)</td>
+            <td>「幫我決定晚餐吃什麼」</td>
+            <td>1 秒內直接指定唯一餐點，不列清單、話少俐落</td>
+            <td>✅「今晚吃牛肉麵！🍜 直截了當，不用謝。」（耗時 0.76 秒）</td>
           </tr>
           <tr>
             <td><strong>2. 輸入不完整</strong><br>(空白訊息防呆)</td>
-            <td>傳送純空白鍵 <code>"   "</code></td>
-            <td>提示訊息空白，提醒補充問題或查看 <code>/help</code></td>
-            <td>✅ 回覆：「⚠️ 提示：您輸入的訊息內容是空白的...」</td>
+            <td>傳送純空格 <code>"   "</code></td>
+            <td>提示內容空白，提醒補充問題或輸入 <code>/help</code></td>
+            <td>✅ 回覆：「⚠️ 提示：您輸入的訊息內容是空白的，請輸入想詢問的問題...」</td>
           </tr>
           <tr>
             <td><strong>3. 不支援的輸入</strong><br>(未知指令引導)</td>
@@ -288,7 +291,7 @@
       </p>
     </div>
     <div class="slide-footer">
-      <span>實測記錄表 ｜ 驗證真實有效</span>
+      <span>三大情境實測表 ｜ 驗證真實有效</span>
       <span>3 / 5</span>
     </div>
   </div>
@@ -297,18 +300,18 @@
   <div class="slide">
     <div class="slide-header">
       <h2>4. AI 如何協助，以及如何檢查與修正</h2>
-      <p>說明 AI Agent 工具使用歷程與關鍵除錯真實經驗</p>
+      <p>說明 AI Agent 工具使用歷程與關鍵性能/風格調優經驗</p>
     </div>
     <div class="slide-body">
       <div class="box" style="margin-bottom: 0.8rem;">
         <h4>🛠️ AI 協助的環節</h4>
-        <p>運用 <strong>Antigravity AI Agent</strong> 進行架構規畫、撰寫 <code>line-bot-sdk v3</code> 數位簽章驗證、建立 pytest 自動化測試，並快速產出多輪記憶核心模組。</p>
+        <p>運用 <strong>Antigravity AI Agent</strong> 進行架構設計、實作 LINE SDK v3 簽章防護、撰寫 pytest 自動化測試，並進行多模型 Benchmark 速度評測。</p>
       </div>
       <div class="box box-info">
         <h4>🔍 真實檢查與修正 AI 產出的經驗</h4>
         <ul>
-          <li><strong>問題發生</strong>：AI 原先引導使用的 Gemini 模型名稱因 Google 近期更新已淘汰，呼叫時遭遇 <code>404 NOT_FOUND</code>；切換模型後又遇上高流量的 <code>503 UNAVAILABLE</code> 尖峰。</li>
-          <li><strong>檢查與修正</strong>：我主動檢查 API 回傳錯誤日誌，指揮 AI 呼叫 <code>client.models.list()</code> 檢索實際可用的模型清單，最終鎖定 <strong><code>gemini-3.7-flash</code></strong>，並建立三層模型平滑降級備援機制（3.7-flash → 3.5-flash → 3.8-flash），徹底解決模型斷線風險！</li>
+          <li><strong>問題發生</strong>：AI 原先產出的程式碼採用 <code>gemini-3.7-flash</code> 且輸出上限高達 1500 字，造成伺服器需思考 12 秒以上才擠出一長串說教式清單，使用者體驗極差。</li>
+          <li><strong>檢查與修正</strong>：我立刻進行實測 Benchmark，指導 AI 切換至極速低延遲的 <strong><code>gemini-flash-lite-latest</code></strong> 模型，並嚴格將 Token 限制於 150，在 Prompt 寫死「禁止廢話、禁止列清單、直接給唯一答案」，成功讓耗時從 12.6 秒降到 <strong>0.76 秒</strong>！</li>
         </ul>
       </div>
     </div>
@@ -329,21 +332,21 @@
         <div class="box" style="font-size: 0.85rem;">
           <h4>💡 心得與已知限制</h4>
           <ul>
-            <li><strong>收穫</strong>：掌握 LINE Webhook HMAC 驗證、多輪 Chat Session 狀態管理與 Render CI/CD 部署。</li>
-            <li><strong>限制</strong>：目前 Session 存在記憶體中，未來可外接 Redis/PostgreSQL 達成永久記憶持久化。</li>
+            <li><strong>收穫</strong>：深刻理解 AI 對話設計中「低延遲（速度）」與「乾脆決策」往往比寫長篇作文更符合真實人性。</li>
+            <li><strong>限制</strong>：目前 Session 記憶儲存在記憶體中，未來可擴充 Redis 持久化儲存。</li>
           </ul>
         </div>
         <div class="box box-info" style="font-size: 0.85rem;">
           <h4>📈 改善前後差異 (v1.0 vs v2.0)</h4>
           <ul>
-            <li><strong>v1.0 (Commit d2d6c2f)</strong>：單次無狀態，代名詞斷裂。</li>
-            <li><strong>v2.0 (Commit 7d4b399)</strong>：<strong>新增多輪記憶、user_id 隔離、/reset 指令、輸入防呆提示</strong>。</li>
+            <li><strong>v1.0 (Commit d2d6c2f)</strong>：耗時 12 秒，廢話清單多，無法決策。</li>
+            <li><strong>v2.0 (Commit c7bde51)</strong>：<strong>0.7 秒秒回、話少俐落、果斷直接決定唯一答案</strong>。</li>
           </ul>
         </div>
       </div>
       <div class="box" style="background: #f0fdf4; border-left-color: #06c755; font-size: 0.85rem;">
         <h4>📋 線上文字繳交資訊彙整</h4>
-        <p><strong>專題名稱</strong>：LINE Bot AI 智慧助理（多輪對話記憶與雲端部署改善版）<br>
+        <p><strong>專題名稱</strong>：LINE Bot AI 智慧助理（果斷極速決策改善版）<br>
         <strong>GitHub 專案連結</strong>：https://github.com/VIKYEH/hello-python<br>
         <strong>開發紀錄網頁連結</strong>：https://vikyeh.github.io/hello-python/<br>
         <strong>實測證明位置</strong>：開發紀錄網頁中「五、重新測試結果（實測證明）」章節</p>
