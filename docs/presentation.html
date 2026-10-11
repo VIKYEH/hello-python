@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>成果簡報 - LINE Bot AI 智慧助理 (多輪對話記憶改善版)</title>
+  <title>LINEBot-LINE Bot AI 智慧助理-成果簡報</title>
   <style>
     :root {
       --primary: #06c755;
@@ -39,9 +39,9 @@
       background: var(--primary);
       color: white;
       border: none;
-      padding: 0.6rem 1.2rem;
+      padding: 0.6rem 1.3rem;
       border-radius: 8px;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: bold;
       cursor: pointer;
       transition: background 0.2s;
@@ -52,7 +52,7 @@
       height: 540px; /* 16:9 ratio */
       background: white;
       border-radius: 12px;
-      padding: 2.5rem 3rem;
+      padding: 2.2rem 2.8rem;
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
       display: flex;
       flex-direction: column;
@@ -62,30 +62,30 @@
     }
     .slide-header {
       border-bottom: 2px solid #e2e8f0;
-      padding-bottom: 0.8rem;
+      padding-bottom: 0.6rem;
     }
     .slide-header h2 {
-      font-size: 1.8rem;
+      font-size: 1.75rem;
       color: var(--dark);
       font-weight: 800;
     }
     .slide-header p {
       font-size: 0.95rem;
       color: #64748b;
-      margin-top: 0.2rem;
+      margin-top: 0.15rem;
     }
     .slide-body {
       flex: 1;
-      padding: 1.2rem 0;
+      padding: 1rem 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      font-size: 1.05rem;
-      line-height: 1.6;
+      font-size: 1rem;
+      line-height: 1.55;
     }
     .slide-footer {
       border-top: 1px solid #f1f5f9;
-      padding-top: 0.5rem;
+      padding-top: 0.4rem;
       display: flex;
       justify-content: space-between;
       font-size: 0.8rem;
@@ -100,15 +100,15 @@
       padding: 3rem;
     }
     .cover-slide h1 {
-      font-size: 2.6rem;
+      font-size: 2.5rem;
       font-weight: 800;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
     }
     .cover-slide h3 {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       font-weight: 400;
       opacity: 0.95;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
     }
     .cover-meta {
       display: inline-block;
@@ -116,44 +116,40 @@
       padding: 0.8rem 1.6rem;
       border-radius: 10px;
       backdrop-filter: blur(5px);
-      font-size: 1rem;
+      font-size: 0.98rem;
     }
     .card-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.2rem;
+      gap: 1rem;
     }
     .box {
       background: #f8fafc;
       border-left: 4px solid var(--primary);
-      padding: 1rem 1.2rem;
+      padding: 0.9rem 1.1rem;
       border-radius: 8px;
-    }
-    .box-danger {
-      border-left-color: #ef4444;
-      background: #fef2f2;
     }
     .box-info {
       border-left-color: #3b82f6;
       background: #eff6ff;
     }
     .box h4 {
-      margin-bottom: 0.4rem;
-      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+      font-size: 1rem;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
     }
     th, td {
-      padding: 0.6rem 0.8rem;
+      padding: 0.5rem 0.7rem;
       border: 1px solid #e2e8f0;
       text-align: left;
     }
     th { background: #f1f5f9; font-weight: bold; }
-    ul { padding-left: 1.4rem; }
-    li { margin-bottom: 0.3rem; }
+    ul { padding-left: 1.3rem; }
+    li { margin-bottom: 0.25rem; }
     @media print {
       body {
         background: none;
@@ -176,184 +172,186 @@
 
   <div class="print-tip">
     <div>
-      <strong>📄 匯出 PDF 教學：</strong>
-      點擊右側按鈕或按快捷鍵 <code>Ctrl + P</code>，列印目標選擇「<strong>另存為 PDF</strong>」，即可下載為標準 16:9 簡報檔案！
+      <strong>📄 匯出 PDF 成果簡報：</strong>
+      點擊右側按鈕或按 <code>Ctrl + P</code>，列印目的地選擇「<strong>另存為 PDF</strong>」，建議檔名：<code>LINEBot-LINE Bot AI 智慧助理-成果簡報.pdf</code>
     </div>
-    <button class="print-btn" onclick="window.print()">🖨️ 另存為 PDF 簡報</button>
+    <button class="print-btn" onclick="window.print()">🖨️ 匯出 PDF 簡報</button>
   </div>
 
-  <!-- Slide 1: 封面 -->
-  <div class="slide cover-slide">
-    <h1>LINE Bot AI 智慧助理</h1>
-    <h3>基於 Gemini Chat API 的多輪對話記憶與雲端部署改善</h3>
-    <div class="cover-meta">
-      <p>專題學生：<strong>VIKYEH</strong> ｜ 繳交日期：2026 年 10 月</p>
-      <p style="margin-top: 0.3rem; font-size: 0.88rem; opacity: 0.9;">GitHub: github.com/VIKYEH/hello-python</p>
-    </div>
-  </div>
-
-  <!-- Slide 2: 第一版回顧 -->
+  <!-- Page 1: 專題名稱、使用對象與想解決的問題 -->
   <div class="slide">
     <div class="slide-header">
-      <h2>1. 第一版 (v1.0) 基礎成果</h2>
-      <p>完成現代化 LINE Bot 基礎架構與雲端部署</p>
+      <h2>1. 專題名稱、使用對象與想解決的問題</h2>
+      <p>專題名稱：LINE Bot AI 智慧助理（多輪對話記憶與雲端部署改善版）</p>
     </div>
     <div class="slide-body">
       <div class="card-grid">
         <div class="box">
-          <h4>🛡️ 核心安全性</h4>
-          <p>採用官方最新 <code>line-bot-sdk v3</code> 與 Flask，嚴格檢驗 <code>X-Line-Signature</code> HMAC 數位簽章。</p>
+          <h4>🎯 專題定位與使用對象</h4>
+          <ul>
+            <li><strong>使用對象</strong>：學生、上班族、一般 LINE 通訊軟體用戶。</li>
+            <li><strong>應用場景</strong>：隨手查資料、日常諮詢、寫作與翻譯，免裝額外 App。</li>
+          </ul>
         </div>
-        <div class="box">
-          <h4>⚡ 系統指令秒回</h4>
-          <p>內建 <code>/help</code>、<code>/time</code>、<code>/ping</code> 指令，不耗損外部 API 額度即可快速回應。</p>
+        <div class="box box-info">
+          <h4>💡 想解決的核心問題</h4>
+          <ul>
+            <li><strong>痛點 1（便利性）</strong>：傳統 AI 需切換專用 App 或網頁，整合進 LINE 最直覺。</li>
+            <li><strong>痛點 2（第一版斷裂）</strong>：第一版為無狀態單次呼叫，無法記住前文代名詞。</li>
+          </ul>
         </div>
-        <div class="box">
-          <h4>🧠 Gemini AI 串接</h4>
-          <p>成功整合 Google Gemini 3.7 Flash 模型，擺脫死板回音模式，具備繁體中文問答能力。</p>
-        </div>
-        <div class="box">
-          <h4>☁️ 24H 雲端上線</h4>
-          <p>完整部署於 Render 雲端平台，具備永久 HTTPS 網址，無需依賴本地電腦開機。</p>
-        </div>
+      </div>
+      <div class="box" style="margin-top: 0.9rem; border-left-color: #06c755;">
+        <h4>🚀 改善版的核心目標</h4>
+        <p>升級為 <strong>Gemini Chat API 多輪對話記憶</strong>，依 LINE <code>user_id</code> 獨立隔離對話 Session，並提供完善的防呆提示與 Render 24 小時雲端部署！</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>第一版 Commit: d2d6c2f (Tag: v1.0)</span>
-      <span>2 / 6</span>
+      <span>開發者：VIKYEH ｜ GitHub: github.com/VIKYEH/hello-python</span>
+      <span>1 / 5</span>
     </div>
   </div>
 
-  <!-- Slide 3: 原本的問題 -->
+  <!-- Page 2: 核心功能與對話範例 -->
   <div class="slide">
     <div class="slide-header">
-      <h2>2. 原本的問題 (Original Problem)</h2>
-      <p>深入分析第一版使用過程中的核心限制</p>
-    </div>
-    <div class="slide-body">
-      <div class="box-danger" style="margin-bottom: 1.2rem;">
-        <h4>⚠️ 核心痛點：單次請求無狀態（Stateless），缺乏上下文記憶</h4>
-        <p>第一版採用 <code>models.generate_content</code> 獨立呼叫，每一則訊息回答完後立即遺忘。</p>
-      </div>
-      <ul>
-        <li><strong>無法解析代名詞與關聯詞</strong>：如問「台灣首都在哪？」→「台北」；再問「那裡有什麼好吃的？」，AI 無法知道「那裡」指台北。</li>
-        <li><strong>深度引導中斷</strong>：無法進行多步驟討論（如規劃行程、除錯程式碼），對話每換一句就重新開局。</li>
-        <li><strong>使用者體驗受損</strong>：在即時通訊軟體（LINE）中，使用者習慣自然連續對話，無法記憶顯得生硬。</li>
-      </ul>
-    </div>
-    <div class="slide-footer">
-      <span>改善動機與問題分析</span>
-      <span>3 / 6</span>
-    </div>
-  </div>
-
-  <!-- Slide 4: 改善內容 -->
-  <div class="slide">
-    <div class="slide-header">
-      <h2>3. 改善內容與技術架構 (v2.0)</h2>
-      <p>引入 Gemini Chat Session 與使用者獨立 Session 隔離管理</p>
+      <h2>2. 核心功能與對話範例</h2>
+      <p>結合 Google Gemini 3.7 Flash 大腦與 LINE SDK v3 模組化架構</p>
     </div>
     <div class="slide-body">
       <div class="card-grid">
-        <div class="box-info">
-          <h4>💬 多輪對話記憶機制</h4>
-          <p>改用 <code>client.chats.create()</code> 與 <code>chat.send_message()</code>，保留整段對話歷史，使 AI 能精準理解前文脈絡。</p>
+        <div class="box">
+          <h4>🤖 核心功能特色</h4>
+          <ul>
+            <li><strong>上下文記憶</strong>：能理解「那裡、他、這件事」等前文代名詞。</li>
+            <li><strong>個人隔離 Session</strong>：每位好友擁有獨立記憶空間，互不混淆。</li>
+            <li><strong>快捷系統指令</strong>：<code>/help</code>、<code>/time</code>、<code>/ping</code> 秒回不耗額度。</li>
+            <li><strong><code>/reset</code> 重設記憶</strong>：隨時清除記憶重啟話題。</li>
+          </ul>
         </div>
-        <div class="box-info">
-          <h4>👥 依 LINE User ID 獨立隔離</h4>
-          <p>以 <code>event.source.user_id</code> 為 Key 建立每位好友專屬的 Session 字典，多名用戶同時聊天互不干擾、不混淆。</p>
-        </div>
-        <div class="box-info">
-          <h4>🔄 新增 /reset 快捷指令</h4>
-          <p>讓使用者能主動清空記憶，隨時開啟全新話題，兼顧靈活性與控制權。</p>
-        </div>
-        <div class="box-info">
-          <h4>🛡️ 多模型平滑降級備援</h4>
-          <p>內建 gemini-3.7-flash → 3.5-flash → 3.8-flash 備援防護，尖峰時刻自動切換，永不斷線。</p>
+        <div class="box box-info" style="font-size: 0.88rem;">
+          <h4>📱 真實對話範例</h4>
+          <p><strong>用戶</strong>：你好！我叫做小宇，我住在台北。<br>
+          <strong>AI</strong>：嗨小宇！很高興認識你！台北很棒呢！😊<br>
+          <strong>用戶</strong>：你知道我剛剛說我住哪裡嗎？<br>
+          <strong>AI</strong>：<strong>當然！你剛說你住在台北！🏙️</strong><br>
+          <strong>用戶</strong>：/reset<br>
+          <strong>AI</strong>：🔄 對話記憶已清除，我們重新開始吧！</p>
         </div>
       </div>
     </div>
     <div class="slide-footer">
-      <span>架構改良細節 (handlers/ai_service.py)</span>
-      <span>4 / 6</span>
+      <span>核心功能與對話範例 ｜ 改善版 v2.0</span>
+      <span>2 / 5</span>
     </div>
   </div>
 
-  <!-- Slide 5: 前後差異對照 -->
+  <!-- Page 3: 實際操作與測試結果 (三大情境) -->
   <div class="slide">
     <div class="slide-header">
-      <h2>4. 改善前後差異對照</h2>
-      <p>功能架構與真實對話體驗之實質躍進</p>
+      <h2>3. 實際操作與測試結果（三大情境實測）</h2>
+      <p>親自實測三大情境：正常使用、輸入不完整、不支援的輸入</p>
     </div>
     <div class="slide-body">
       <table>
         <thead>
           <tr>
-            <th>比較維度</th>
-            <th>第一版 (v1.0)</th>
-            <th>改善後版本 (v2.0)</th>
+            <th>測試情境</th>
+            <th>輸入內容</th>
+            <th>預期結果</th>
+            <th>實際結果</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>呼叫架構</strong></td>
-            <td><code>generate_content</code>（無狀態）</td>
-            <td><code>client.chats.create</code>（多輪 Chat Session）</td>
+            <td><strong>1. 正常使用</strong><br>(多輪記憶與指令)</td>
+            <td>①「我叫小宇」<br>②「我叫什麼名字？」<br>③ <code>/time</code></td>
+            <td>① 親切問候<br>② 準確回答小宇<br>③ 回傳伺服器時間</td>
+            <td>✅ 親切問好<br>✅ 正確回答「你是小宇！」<br>✅ 秒回伺服器時間</td>
           </tr>
           <tr>
-            <td><strong>上下文理解</strong></td>
-            <td>❌ 無法理解代名詞、前言不對後語</td>
-            <td>✅ <strong>精準理解代名詞（它/他/那裡）、多步驟追問</strong></td>
+            <td><strong>2. 輸入不完整</strong><br>(空白訊息防呆)</td>
+            <td>傳送純空白鍵 <code>"   "</code></td>
+            <td>提示訊息空白，提醒補充問題或查看 <code>/help</code></td>
+            <td>✅ 回覆：「⚠️ 提示：您輸入的訊息內容是空白的...」</td>
           </tr>
           <tr>
-            <td><strong>對話隔離</strong></td>
-            <td>無狀態因此無隔離</td>
-            <td>✅ <strong>依 user_id 建立獨立記憶空間</strong></td>
-          </tr>
-          <tr>
-            <td><strong>記憶控制</strong></td>
-            <td>無</td>
-            <td>✅ <strong>提供 <code>/reset</code> 指令一鍵重新開局</strong></td>
-          </tr>
-          <tr>
-            <td><strong>對話範例</strong></td>
-            <td>問：剛剛我是誰？<br>答：我不清楚你是誰。</td>
-            <td>問：剛剛我是誰？<br>答：<strong>你是剛才說住在台北的小宇！😊</strong></td>
+            <td><strong>3. 不支援的輸入</strong><br>(未知指令引導)</td>
+            <td>傳送未知指令 <code>/weather</code></td>
+            <td>告知指令不支援，並列出可用的支援指令清單</td>
+            <td>✅ 回覆：「⚠️ 不支援的指令：/weather，目前支援...」</td>
           </tr>
         </tbody>
       </table>
+      <p style="margin-top: 0.6rem; font-size: 0.85rem; color: #166534; font-weight: bold;">
+        🧪 自動化單元測試：pytest tests/ -v 取得 6 / 6 PASSED (100% 通過)
+      </p>
     </div>
     <div class="slide-footer">
-      <span>前後差異與使用者體驗升級</span>
-      <span>5 / 6</span>
+      <span>實測記錄表 ｜ 驗證真實有效</span>
+      <span>3 / 5</span>
     </div>
   </div>
 
-  <!-- Slide 6: 重新測試結果與實測證明 -->
+  <!-- Page 4: AI 如何協助，以及你如何檢查或修正 -->
   <div class="slide">
     <div class="slide-header">
-      <h2>5. 重新測試結果與實測證明</h2>
-      <p>單元測試 100% 通過與線上即時連線實證</p>
+      <h2>4. AI 如何協助，以及如何檢查與修正</h2>
+      <p>說明 AI Agent 工具使用歷程與關鍵除錯真實經驗</p>
     </div>
     <div class="slide-body">
-      <div class="box" style="margin-bottom: 1rem; border-left-color: #06c755;">
-        <h4>🧪 自動化單元測試結果：4 / 4 PASSED (100%)</h4>
-        <p>包含健康檢查端點、缺簽章阻擋、偽造簽章阻擋、指令與重設記憶邏輯測試。</p>
+      <div class="box" style="margin-bottom: 0.8rem;">
+        <h4>🛠️ AI 協助的環節</h4>
+        <p>運用 <strong>Antigravity AI Agent</strong> 進行架構規畫、撰寫 <code>line-bot-sdk v3</code> 數位簽章驗證、建立 pytest 自動化測試，並快速產出多輪記憶核心模組。</p>
       </div>
-      <div class="card-grid">
-        <div class="box">
-          <h4>📱 LINE 真機對話實測證明</h4>
-          <p>實測多輪詢問居住地與美食推薦，AI 連貫應答並準確回顧前文；執行 <code>/reset</code> 後確認歷史清空，邏輯嚴謹。</p>
-        </div>
-        <div class="box">
-          <h4>🌐 雲端連線實測證明</h4>
-          <p>Render 雲端服務持續 Live 運作中，LINE Developers Console Webhook 驗證通過（Success）。</p>
-        </div>
+      <div class="box box-info">
+        <h4>🔍 真實檢查與修正 AI 產出的經驗</h4>
+        <ul>
+          <li><strong>問題發生</strong>：AI 原先引導使用的 Gemini 模型名稱因 Google 近期更新已淘汰，呼叫時遭遇 <code>404 NOT_FOUND</code>；切換模型後又遇上高流量的 <code>503 UNAVAILABLE</code> 尖峰。</li>
+          <li><strong>檢查與修正</strong>：我主動檢查 API 回傳錯誤日誌，指揮 AI 呼叫 <code>client.models.list()</code> 檢索實際可用的模型清單，最終鎖定 <strong><code>gemini-3.7-flash</code></strong>，並建立三層模型平滑降級備援機制（3.7-flash → 3.5-flash → 3.8-flash），徹底解決模型斷線風險！</li>
+        </ul>
       </div>
     </div>
     <div class="slide-footer">
-      <span>GitHub 專案：VIKYEH/hello-python ｜ Commit: 1087193 (Tag: v2.0)</span>
-      <span>6 / 6</span>
+      <span>AI 協作與真實問題排查紀錄</span>
+      <span>4 / 5</span>
+    </div>
+  </div>
+
+  <!-- Page 5: 心得、限制、改善前後差異與下一步（含線上繳交資訊） -->
+  <div class="slide">
+    <div class="slide-header">
+      <h2>5. 心得、限制與成果繳交資訊</h2>
+      <p>專案總結、架構演進與成果網址清單</p>
+    </div>
+    <div class="slide-body">
+      <div class="card-grid" style="margin-bottom: 0.7rem;">
+        <div class="box" style="font-size: 0.85rem;">
+          <h4>💡 心得與已知限制</h4>
+          <ul>
+            <li><strong>收穫</strong>：掌握 LINE Webhook HMAC 驗證、多輪 Chat Session 狀態管理與 Render CI/CD 部署。</li>
+            <li><strong>限制</strong>：目前 Session 存在記憶體中，未來可外接 Redis/PostgreSQL 達成永久記憶持久化。</li>
+          </ul>
+        </div>
+        <div class="box box-info" style="font-size: 0.85rem;">
+          <h4>📈 改善前後差異 (v1.0 vs v2.0)</h4>
+          <ul>
+            <li><strong>v1.0 (Commit d2d6c2f)</strong>：單次無狀態，代名詞斷裂。</li>
+            <li><strong>v2.0 (Commit 7d4b399)</strong>：<strong>新增多輪記憶、user_id 隔離、/reset 指令、輸入防呆提示</strong>。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="box" style="background: #f0fdf4; border-left-color: #06c755; font-size: 0.85rem;">
+        <h4>📋 線上文字繳交資訊彙整</h4>
+        <p><strong>專題名稱</strong>：LINE Bot AI 智慧助理（多輪對話記憶與雲端部署改善版）<br>
+        <strong>GitHub 專案連結</strong>：https://github.com/VIKYEH/hello-python<br>
+        <strong>開發紀錄網頁連結</strong>：https://vikyeh.github.io/hello-python/<br>
+        <strong>實測證明位置</strong>：開發紀錄網頁中「五、重新測試結果（實測證明）」章節</p>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>Tag: v1.0 (第一版) ｜ Tag: v2.0 (改善版)</span>
+      <span>5 / 5</span>
     </div>
   </div>
 

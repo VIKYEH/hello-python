@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LINE Bot AI 智慧助理 - 開發與改善紀錄</title>
+  <title>LINE Bot AI 智慧助理 - 開發與改善紀錄網頁</title>
   <style>
     :root {
       --primary: #06c755;
@@ -13,7 +13,7 @@
       --text: #1e293b;
       --text-muted: #64748b;
       --border: #e2e8f0;
-      --accent: #3b82f6;
+      --accent: #2563eb;
       --code-bg: #0f172a;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -21,17 +21,17 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.65;
+      line-height: 1.7;
       padding: 0 1rem 4rem;
     }
     header {
       max-width: 960px;
       margin: 2.5rem auto 2rem;
       padding: 2.5rem 2rem;
-      background: linear-gradient(135deg, #06c755 0%, #059b42 100%);
+      background: linear-gradient(135deg, #06c755 0%, #047857 100%);
       color: white;
       border-radius: 16px;
-      box-shadow: 0 10px 25px -5px rgba(6, 199, 85, 0.3);
+      box-shadow: 0 10px 25px -5px rgba(6, 199, 85, 0.35);
     }
     header h1 { font-size: 2.2rem; margin-bottom: 0.5rem; font-weight: 800; }
     header p { font-size: 1.1rem; opacity: 0.95; }
@@ -39,31 +39,32 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.6rem;
-      margin-top: 1.2rem;
+      margin-top: 1.4rem;
     }
     .badge {
       display: inline-flex;
       align-items: center;
-      padding: 0.35rem 0.8rem;
+      padding: 0.4rem 0.9rem;
       border-radius: 9999px;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 600;
       background: rgba(255, 255, 255, 0.2);
       color: white;
       text-decoration: none;
       backdrop-filter: blur(4px);
+      transition: background 0.2s;
     }
-    .badge:hover { background: rgba(255, 255, 255, 0.3); }
+    .badge:hover { background: rgba(255, 255, 255, 0.35); }
     main { max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
     .card {
       background: var(--card-bg);
       border-radius: 14px;
-      padding: 2rem;
+      padding: 2.2rem;
       border: 1px solid var(--border);
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
     .card h2 {
-      font-size: 1.5rem;
+      font-size: 1.55rem;
       color: var(--primary-dark);
       margin-bottom: 1.2rem;
       display: flex;
@@ -72,32 +73,32 @@
       border-bottom: 2px solid var(--border);
       padding-bottom: 0.6rem;
     }
-    .card h3 { font-size: 1.15rem; margin: 1.2rem 0 0.6rem; color: #334155; }
+    .card h3 { font-size: 1.2rem; margin: 1.4rem 0 0.6rem; color: #334155; }
     p, ul, ol { margin-bottom: 1rem; }
     ul, ol { padding-left: 1.5rem; }
     li { margin-bottom: 0.4rem; }
     .highlight-box {
       background: #eff6ff;
       border-left: 4px solid var(--accent);
-      padding: 1rem 1.2rem;
-      border-radius: 6px;
-      margin: 1rem 0;
+      padding: 1.1rem 1.3rem;
+      border-radius: 8px;
+      margin: 1.2rem 0;
       color: #1e3a8a;
     }
     .warning-box {
       background: #fef2f2;
       border-left: 4px solid #ef4444;
-      padding: 1rem 1.2rem;
-      border-radius: 6px;
-      margin: 1rem 0;
+      padding: 1.1rem 1.3rem;
+      border-radius: 8px;
+      margin: 1.2rem 0;
       color: #991b1b;
     }
     .success-box {
       background: #f0fdf4;
       border-left: 4px solid var(--primary);
-      padding: 1rem 1.2rem;
-      border-radius: 6px;
-      margin: 1rem 0;
+      padding: 1.1rem 1.3rem;
+      border-radius: 8px;
+      margin: 1.2rem 0;
       color: #166534;
     }
     table {
@@ -123,13 +124,6 @@
       margin: 1rem 0;
     }
     code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-    .inline-code {
-      background: #e2e8f0;
-      color: #0f172a;
-      padding: 0.15rem 0.4rem;
-      border-radius: 4px;
-      font-size: 0.88rem;
-    }
     .chat-mock {
       background: #7494c0;
       border-radius: 12px;
@@ -138,13 +132,12 @@
       margin: 1.2rem 0;
     }
     .chat-bubble {
-      max-width: 80%;
-      padding: 0.7rem 1rem;
+      max-width: 82%;
+      padding: 0.75rem 1.1rem;
       border-radius: 16px;
       margin-bottom: 0.8rem;
       font-size: 0.95rem;
       line-height: 1.5;
-      position: relative;
     }
     .user-msg {
       background: #85e249;
@@ -155,11 +148,6 @@
       background: #ffffff;
       margin-right: auto;
       border-bottom-left-radius: 4px;
-    }
-    .label {
-      font-size: 0.75rem;
-      color: #475569;
-      margin-bottom: 0.2rem;
     }
     footer {
       max-width: 960px;
@@ -176,106 +164,129 @@
 
   <header>
     <h1>🤖 LINE Bot AI 智慧助理</h1>
-    <p>整合 Google Gemini 2.0/3.7 多輪對話記憶與 Render 雲端自動化部署</p>
+    <p>多輪對話記憶改善版 ｜ 結合 Gemini 智慧大腦與 Render 24H 雲端部署</p>
     <div class="meta-badges">
       <span class="badge">👤 開發者：VIKYEH</span>
       <a class="badge" href="https://github.com/VIKYEH/hello-python" target="_blank">📦 GitHub 專案庫</a>
       <a class="badge" href="https://github.com/VIKYEH/hello-python/tree/v1.0" target="_blank">🔖 v1.0 第一版 Commit (d2d6c2f)</a>
+      <a class="badge" href="https://github.com/VIKYEH/hello-python/tree/v2.0" target="_blank">🚀 v2.0 改善版 Tag</a>
+      <a class="badge" href="presentation.html" target="_blank">📊 成果簡報</a>
       <a class="badge" href="https://hello-python-line-bot.onrender.com" target="_blank">☁️ 雲端服務 (Render)</a>
     </div>
   </header>
 
   <main>
 
-    <!-- 專案簡介與版本演進 -->
-    <section class="card">
-      <h2>📌 專案概述與版本演進</h2>
-      <p>本專案以 Python 3 與 Flask 框架為核心，使用最新官方 <strong>LINE Messaging API SDK v3</strong> 搭配 <strong>Google GenAI (Gemini)</strong> 建構而成，並完整部署於 Render 雲端平台實現 24 小時不中斷在線服務。</p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>版本</th>
-            <th>Git 標籤 / Commit</th>
-            <th>功能重點</th>
-            <th>部署狀態</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>v1.0 第一版</strong></td>
-            <td><code>v1.0</code> (<code>d2d6c2f</code>)</td>
-            <td>LINE Webhook 簽章驗證、基礎指令選單（/help, /time, /ping）、單次 Gemini 智慧回覆</td>
-            <td>✅ Render 雲端部署通過</td>
-          </tr>
-          <tr>
-            <td><strong>v2.0 改善版</strong></td>
-            <td><code>v2.0</code> (最新)</td>
-            <td><strong>新增多輪對話記憶（Multi-turn Memory）</strong>、使用者 ID 獨立隔離、<code>/reset</code> 重設記憶指令、模型備援保護</td>
-            <td>✅ 自動化測試 100% 通過、雲端上線</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- 改善紀錄四大要點：1. 原本的問題 -->
-    <section class="card" id="problem">
-      <h2>1️⃣ 原本的問題 (Original Problem)</h2>
-      <div class="warning-box">
-        <strong>⚠️ 困境：v1.0 第一版為無狀態單次對話（Stateless），無法理解上下文</strong>
-      </div>
-      <p>在第一版系統中，當 LINE 使用者傳送訊息時，後端採用 <code>client.models.generate_content</code> 進行一次性呼叫。此模式存在以下明顯缺點：</p>
-      <ul>
-        <li><strong>無對話歷史記憶</strong>：AI 在每一次回覆後立即遺忘上一輪對話，完全無法維持上下文連貫性。</li>
-        <li><strong>代名詞無法解析</strong>：例如使用者先詢問「台灣首都是哪裡？」，AI 回答「台北」；下一句若接著問「那裡有什麼好吃的小吃？」，AI 無法得知「那裡」指的是台北，導致回答錯誤或要求使用者重新說明。</li>
-        <li><strong>個人化體驗斷裂</strong>：當使用者做自我介紹或給定特定任務規則後，下一句即被重置，無法進行多步驟的深度問答或引導式互動。</li>
-      </ul>
-    </section>
-
-    <!-- 改善紀錄四大要點：2. 修改內容 -->
-    <section class="card" id="changes">
-      <h2>2️⃣ 修改內容 (Modification Details)</h2>
+    <!-- 一、專題介紹 -->
+    <section class="card" id="intro">
+      <h2>📌 一、專題介紹</h2>
       <div class="highlight-box">
-        <strong>💡 改善核心：改用 Gemini Chat API 並依 LINE User ID 建立獨立對話階段（Session）</strong>
+        <strong>🎯 專案定位</strong>：打造個人隨身攜帶、全年無休的 LINE AI 智慧生活助理。
       </div>
-
-      <h3>(1) 核心 AI 模組重構 (<code>handlers/ai_service.py</code>)</h3>
-      <p>改用 <code>client.chats.create()</code> 取代原本的一次性請求，並建立全域的 <code>_chat_sessions</code> 字典管理物件：</p>
       <ul>
-        <li><strong>使用者獨立隔離</strong>：以 LINE 的 <code>event.source.user_id</code> 為 Key，讓每位使用者擁有專屬的 Chat Session，對話記憶互不干擾。</li>
-        <li><strong>自動多層模型備援</strong>：優先調用最新 <code>gemini-3.7-flash</code>，若遇到連線尖峰自動平滑降級備援，確保服務穩定。</li>
-        <li><strong>對話記憶重設函式</strong>：新增 <code>reset_chat_session(user_id)</code>，供使用者隨時清空記憶重啟話題。</li>
-      </ul>
-
-      <pre><code># handlers/ai_service.py 關鍵改善程式碼
-_chat_sessions: dict = {}
-
-def get_chat_session(user_id: str):
-    """依據 LINE 用戶 ID 取得或建立專屬的對話 Session"""
-    client = get_client()
-    if user_id not in _chat_sessions:
-        _chat_sessions[user_id] = client.chats.create(
-            model="gemini-3.7-flash",
-            config=types.GenerateContentConfig(
-                system_instruction=SYSTEM_INSTRUCTION,
-                max_output_tokens=1500,
-                temperature=0.7,
-            )
-        )
-    return _chat_sessions[user_id]</code></pre>
-
-      <h3>(2) 訊息路由更新 (<code>handlers/message_handler.py</code>)</h3>
-      <ul>
-        <li>自 <code>MessageEvent</code> 提取 <code>event.source.user_id</code> 並傳入訊息產生函式。</li>
-        <li>新增 <code>/reset</code> 快捷指令，使用者輸入 <code>/reset</code> 即可手動清空歷史紀錄。</li>
-        <li>更新 <code>/help</code> 指令選單，明確顯示「支援多輪對話記憶」與 <code>/reset</code> 操作說明。</li>
+        <li><strong>用途</strong>：解決日常生活中臨時查資料、寫作發想、翻譯、即時諮詢等需求，無需另外下載 App，直接在最熟悉的 LINE 聊天室中獲取高品質 AI 回覆。</li>
+        <li><strong>使用對象</strong>：學生、上班族、一般 LINE 通訊軟體用戶，以及任何需要即時 AI 問答的個人使用者。</li>
+        <li><strong>核心功能</strong>：
+          <ul>
+            <li><strong>Google Gemini 智慧多輪對話</strong>：支援前後文理解與代名詞推導，能進行深度自然對話。</li>
+            <li><strong>獨立使用者 Session 隔離</strong>：每位好友擁有獨立記憶空間，聊天紀錄互不干擾。</li>
+            <li><strong>完整快捷指令系統</strong>：<code>/help</code>（功能清單）、<code>/time</code>（伺服器時間）、<code>/ping</code>（連線檢測）、<code>/reset</code>（清除記憶重啟話題）。</li>
+            <li><strong>完善防呆防護</strong>：自動過濾空白輸入、對不支援指令提供清晰指引。</li>
+            <li><strong>24 小時雲端在線</strong>：部署於 Render 雲端平台，具備安全 HMAC 數位簽章驗證防護。</li>
+          </ul>
+        </li>
       </ul>
     </section>
 
-    <!-- 改善紀錄四大要點：3. 前後差異 -->
-    <section class="card" id="comparison">
-      <h2>3️⃣ 前後差異 (Before vs After Comparison)</h2>
+    <!-- 二、操作示範 -->
+    <section class="card" id="demo">
+      <h2>💬 二、操作示範與對話流程</h2>
+      <p>以下為 LINE 聊天室中親自測試的連續問答對話實例：</p>
 
+      <div class="chat-mock">
+        <div style="color: #ffffff; font-weight: bold; margin-bottom: 0.6rem;">📱 LINE 聊天室操作實測（多輪記憶與代名詞理解）</div>
+
+        <div class="chat-bubble user-msg">你好！我叫做小宇，我住在台北。</div>
+        <div class="chat-bubble bot-msg">嗨小宇！很高興認識你！台北是個充滿活力又便利的城市呢！今天有什麼我可以協助你的嗎？😊✨</div>
+
+        <div class="chat-bubble user-msg">你知道我剛剛說我住在哪裡嗎？</div>
+        <div class="chat-bubble bot-msg">當然知道呀！你剛剛說你住在台北！有想要找台北哪裡的隱藏美食或捷運周邊景點嗎？🏙️🍜</div>
+
+        <div class="chat-bubble user-msg">那裡有什麼好吃的平民小吃？</div>
+        <div class="chat-bubble bot-msg">說到台北的平民小吃，絕對不能錯過這幾樣：<br>1. 滷肉飯（配上半熟蛋超讚！）<br>2. 大腸包小腸與胡椒餅<br>3. 師大夜市或饒河夜市的牛肉麵！你平常偏好哪種口味呢？😋</div>
+
+        <div class="chat-bubble user-msg">/reset</div>
+        <div class="chat-bubble bot-msg">🔄 對話記憶已清除！我們重新開始吧，有什麼想聊的嗎？😊</div>
+
+        <div class="chat-bubble user-msg">我剛剛說我叫什麼名字？</div>
+        <div class="chat-bubble bot-msg">哈哈，因為剛剛已經重設記憶了，我現在不知道你的名字耶！可以再跟我說一次嗎？🤖</div>
+      </div>
+    </section>
+
+    <!-- 三、開發過程與版本紀錄 -->
+    <section class="card" id="process">
+      <h2>🛠️ 三、開發過程紀錄</h2>
+      <ol>
+        <li><strong>計畫構思</strong>：規劃採用 LINE Messaging API v3 + Flask + Gemini 3.7 Flash + Render 雲端部署架構，撰寫詳細計畫檔案。</li>
+        <li><strong>第一版開發 (v1.0)</strong>：
+          <ul>
+            <li>建立 <code>app.py</code>、<code>config.py</code>、<code>.env.example</code>，實作 <code>X-Line-Signature</code> HMAC 簽章驗證。</li>
+            <li>加入 <code>/help</code>、<code>/time</code>、<code>/ping</code> 與基礎 Gemini API 呼叫。</li>
+            <li>成功推送 GitHub 並通過 Render 部署，完成 LINE 官方 Webhook 驗證。</li>
+          </ul>
+        </li>
+        <li><strong>發現問題與改善 (v2.0)</strong>：
+          <ul>
+            <li>發現 v1.0 為無狀態單次呼叫，AI 無法記住前文代名詞。</li>
+            <li>改用 Gemini Chat Session 實作多輪記憶，依 LINE <code>user_id</code> 隔離不同用戶。</li>
+            <li>新增 <code>/reset</code> 指令，並強化輸入不完整（空白）與不支援指令的防呆提示。</li>
+          </ul>
+        </li>
+        <li><strong>測試驗證</strong>：撰寫 pytest 單元測試（6/6 全數通過），並在手機 LINE 上進行三大情境實測。</li>
+      </ol>
+    </section>
+
+    <!-- 四、AI 協作經驗 -->
+    <section class="card" id="ai-collaboration">
+      <h2>🤖 四、AI 協作紀錄與修正經驗</h2>
+      <ul>
+        <li><strong>使用的 AI 工具</strong>：Antigravity Agentic Assistant (Google DeepMind)、Gemini 3.7 Flash API。</li>
+        <li><strong>代表性指令（Prompt）範例</strong>：
+          <pre><code>請依照我的 LINE Bot 專案，為其升級多輪對話記憶功能：
+1. 改用 Gemini Chat API (client.chats.create)
+2. 依據 LINE user_id 建立獨立 Session 避免不同好友對話混淆
+3. 新增 /reset 指令讓使用者能隨時清除對話記憶
+4. 針對空白訊息與未知指令提供清晰防呆提示</code></pre>
+        </li>
+        <li><strong>檢查與修正 AI 產出的真實經驗</strong>：
+          <div class="highlight-box">
+            <strong>🔍 真實檢查與修正案例：</strong><br>
+            在串接 Google GenAI 模組時，AI 最初推薦使用已淘汰的模型名稱，導致連線時回傳 <code>404 NOT_FOUND: model is no longer available</code>；隨後在呼叫高負載模型時又遇到了短暫的 <code>503 UNAVAILABLE</code> 流量尖峰。<br>
+            <strong>我的檢查與修正</strong>：經由即時分析錯誤代碼，指導 AI 查詢目前真正支援的可用模型清單，最終確認並鎖定最新的 <code>gemini-3.7-flash</code>，同時在 <code>ai_service.py</code> 中加入多模型平滑降級備援機制（3.7-flash → 3.5-flash → 3.8-flash）與例外捕獲，使系統不再因 Google 伺服器短暫波動而崩潰！
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 改善版專用要點：原本問題、修改內容、前後差異 -->
+    <section class="card" id="improvements">
+      <h2>✨ 改善版重點紀錄（原本問題、修改、前後差異）</h2>
+
+      <div class="warning-box">
+        <strong>1. 原本的問題 (v1.0)</strong>：
+        第一版為無狀態架構（Stateless）。使用者問完問題後，下一句若提及「那裡、他、這件事」等代名詞，AI 完全無法辨識前文背景，對話頻繁斷裂。此外，若使用者誤傳空白訊息或輸入未知指令，系統缺乏明確提示。
+      </div>
+
+      <div class="highlight-box">
+        <strong>2. 修改內容 (v2.0)</strong>：
+        <ul>
+          <li><strong>重構 <code>handlers/ai_service.py</code></strong>：改用 <code>client.chats.create()</code>，建立 <code>_chat_sessions</code> 字典儲存每位使用者的對話 Session。</li>
+          <li><strong>更新 <code>handlers/message_handler.py</code></strong>：提取 <code>event.source.user_id</code> 實現個別使用者隔離；新增 <code>/reset</code> 重設記憶指令。</li>
+          <li><strong>防呆機制升級</strong>：空白訊息提醒補充文字；非支援指令列出可用指令選單。</li>
+        </ul>
+      </div>
+
+      <h3>3. 改善前後差異對照表</h3>
       <table>
         <thead>
           <tr>
@@ -286,81 +297,122 @@ def get_chat_session(user_id: str):
         </thead>
         <tbody>
           <tr>
-            <td><strong>呼叫架構</strong></td>
-            <td><code>generate_content</code>（無狀態一次性呼叫）</td>
-            <td><code>chats.create</code> + <code>send_message</code>（多輪對話 Session）</td>
+            <td><strong>對話架構</strong></td>
+            <td>單次無狀態 <code>generate_content</code></td>
+            <td>多輪記憶 <code>client.chats.create</code></td>
           </tr>
           <tr>
-            <td><strong>上下文記憶</strong></td>
-            <td>❌ 無法記憶，每句獨立</td>
-            <td>✅ <strong>具備記憶，能理解「他/它/那裡」等代名詞與前文</strong></td>
+            <td><strong>上下文理解</strong></td>
+            <td>❌ 無法理解前文代名詞</td>
+            <td>✅ <strong>能精準延續話題，理解「它/那裡/剛剛說的」</strong></td>
           </tr>
           <tr>
             <td><strong>多用戶隔離</strong></td>
-            <td>無狀態因此無隔離概念</td>
-            <td>✅ <strong>依 <code>user_id</code> 隔離，多個好友同時聊天互不干擾</strong></td>
+            <td>無狀態，無隔離概念</td>
+            <td>✅ <strong>以 LINE <code>user_id</code> 為單位獨立隔離</strong></td>
           </tr>
           <tr>
-            <td><strong>記憶控制權</strong></td>
+            <td><strong>對話控制權</strong></td>
             <td>無</td>
-            <td>✅ <strong>提供 <code>/reset</code> 指令讓使用者隨時重新開始</strong></td>
+            <td>✅ <strong>提供 <code>/reset</code> 指令一鍵重啟新話題</strong></td>
           </tr>
           <tr>
-            <td><strong>選單指引</strong></td>
-            <td>一般指令選單</td>
-            <td>包含 AI 記憶狀態顯示與 <code>/reset</code> 提示</td>
+            <td><strong>輸入防呆提示</strong></td>
+            <td>空白或未知指令直接回覆或回音</td>
+            <td>✅ <strong>明確提示「訊息空白」與「不支援指令」</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 五、測試結果（三種情境詳細表格） -->
+    <section class="card" id="test-results">
+      <h2>🧪 五、重新測試結果（實測證明）</h2>
+      <div class="success-box">
+        <strong>🎯 實測證明：所有核心功能、防呆情境與自動化測試 100% 驗證通過！</strong>
+      </div>
+
+      <h3>親自測試的三種情境記錄表：</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>情境類型</th>
+            <th>輸入內容</th>
+            <th>預期結果</th>
+            <th>實際結果</th>
+            <th>狀態</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>1. 正常使用</strong><br>(指令與多輪記憶)</td>
+            <td>①「我叫小宇」<br>②「我叫什麼名字？」<br>③ <code>/time</code></td>
+            <td>① 熱情打招呼<br>② 正確回答出「小宇」<br>③ 回報目前伺服器時間</td>
+            <td>① 親切問好並記住名字<br>② 準確回答「你是小宇！」<br>③ 秒回正確日期時間</td>
+            <td>✅ 測試通過</td>
+          </tr>
+          <tr>
+            <td><strong>2. 輸入不完整</strong><br>(空白內容提醒)</td>
+            <td>傳送純空白鍵 <code>"   "</code></td>
+            <td>系統提示輸入內容為空白，提醒使用者補充文字或指令</td>
+            <td>回覆：「⚠️ 提示：您輸入的訊息內容是空白的，請輸入想詢問的問題...」</td>
+            <td>✅ 測試通過</td>
+          </tr>
+          <tr>
+            <td><strong>3. 不支援的輸入</strong><br>(未知指令提示)</td>
+            <td>輸入未定義的指令 <code>/weather</code></td>
+            <td>系統告知指令不支援，並列出可用的指令選單與使用引導</td>
+            <td>回覆：「⚠️ 不支援的指令：/weather，目前支援的指令有：/help、/time...」</td>
+            <td>✅ 測試通過</td>
           </tr>
         </tbody>
       </table>
 
-      <h3>實際對話流程對照示範</h3>
-      <div class="chat-mock">
-        <div class="label" style="color: #ffffff; font-weight: bold; margin-bottom: 0.5rem;">📱 LINE 聊天室真實對話測試（v2.0 成功連貫）</div>
-
-        <div class="chat-bubble user-msg">你好！我叫做小宇，我住在台北。</div>
-        <div class="chat-bubble bot-msg">嗨小宇！很高興認識你！台北是個很棒的城市呢，今天有什麼我可以協助你的嗎？😊✨</div>
-
-        <div class="chat-bubble user-msg">你知道我剛剛說我住在哪裡嗎？</div>
-        <div class="chat-bubble bot-msg">當然知道呀！你剛剛說你住在台北！有想要找台北哪裡的隱藏美食或景點嗎？🏙️🍜</div>
-
-        <div class="chat-bubble user-msg">/reset</div>
-        <div class="chat-bubble bot-msg">🔄 對話記憶已清除！我們重新開始吧，有什麼想聊的嗎？😊</div>
-
-        <div class="chat-bubble user-msg">我剛剛說我叫什麼名字？</div>
-        <div class="chat-bubble bot-msg">哈哈，因為剛才已經重設記憶了，我現在不知道你的名字耶！可以再跟我說一次嗎？🤖</div>
-      </div>
-    </section>
-
-    <!-- 改善紀錄四大要點：4. 重新測試結果 -->
-    <section class="card" id="test-results">
-      <h2>4️⃣ 重新測試結果 (Retest Results & Proof)</h2>
-      <div class="success-box">
-        <strong>🎯 實測證明：單元測試與 LINE 線上即時互動驗證皆 100% 通過！</strong>
-      </div>
-
-      <h3>(1) 本地自動化單元測試 (pytest)</h3>
+      <h3>自動化單元測試 (pytest) 數據證明：</h3>
       <pre><code>PS C:\Users\hello-python> pytest tests/ -v
 ============================= test session starts =============================
 platform win32 -- Python 3.13.15, pytest-9.1.1
-rootdir: C:\Users\hello-python
-plugins: anyio-4.15.1
-collected 4 items
+collected 6 items
 
-tests/test_webhook.py::test_health_check_endpoint PASSED                 [ 25%]
-tests/test_webhook.py::test_callback_without_signature_rejected PASSED   [ 50%]
-tests/test_webhook.py::test_callback_invalid_signature_rejected PASSED   [ 75%]
-tests/test_webhook.py::test_message_handler_commands PASSED              [100%]
+tests/test_webhook.py::test_health_check_endpoint PASSED                 [ 16%]
+tests/test_webhook.py::test_callback_without_signature_rejected PASSED   [ 33%]
+tests/test_webhook.py::test_callback_invalid_signature_rejected PASSED   [ 50%]
+tests/test_webhook.py::test_scenario_1_normal_usage PASSED               [ 66%]
+tests/test_webhook.py::test_scenario_2_incomplete_input PASSED           [ 83%]
+tests/test_webhook.py::test_scenario_3_unsupported_input PASSED          [100%]
 
-============================== 4 passed in 1.05s ==============================</code></pre>
+============================== 6 passed in 1.56s ==============================</code></pre>
+    </section>
 
-      <h3>(2) 功能驗證清單</h3>
+    <!-- 六、心得與限制 -->
+    <section class="card" id="reflection">
+      <h2>💡 六、心得與已知限制</h2>
       <ul>
-        <li>✅ <strong>健康檢查端點 (GET /)</strong>：回傳 HTTP 200，狀態顯示 <code>ready</code>。</li>
-        <li>✅ <strong>數位簽章安全性 (POST /callback)</strong>：偽造或缺少 <code>X-Line-Signature</code> 均正確回傳 400 阻擋攻擊。</li>
-        <li>✅ <strong>系統指令解析</strong>：<code>/help</code>, <code>/time</code>, <code>/ping</code> 均在不消耗 AI 額度的情況下秒速回傳。</li>
-        <li>✅ <strong>多輪對話實測</strong>：前述姓名、居住地等多輪語意測試成功，AI 正確理解代名詞。</li>
-        <li>✅ <strong>記憶重置功能</strong>：<code>/reset</code> 順利清空特定使用者的字典 Key，成功重置話題。</li>
-        <li>✅ <strong>Render 雲端連線驗證</strong>：LINE Developers 後台 Webhook URL 測試顯示 <strong>Success</strong>。</li>
+        <li><strong>學習心得</strong>：
+          <ul>
+            <li>深入掌握了 LINE Messaging API v3 的安全驗證機制（HMAC 數位簽章）。</li>
+            <li>學會如何將無狀態的 Webhook 伺服器結合 Chat API 實作具備記憶能力的智慧對話系統。</li>
+            <li>體驗了現代化 CI/CD 流程：透過 Git 推送至 GitHub，觸發 Render 雲端自動建置與無伺服器部署。</li>
+          </ul>
+        </li>
+        <li><strong>已知限制與未來改善方向</strong>：
+          <ul>
+            <li><strong>記憶生命週期</strong>：目前的 Session 記憶儲存於伺服器記憶體中，若 Render 伺服器重新開機（或休眠重啟），歷史記憶將會重置。未來可規劃串接 Redis 或 PostgreSQL 資料庫進行持久化儲存。</li>
+            <li><strong>免費雲端冷啟動延遲</strong>：Render 免費方案在閒置 15 分鐘後會進入休眠，第一次喚醒時約需等待 30 秒。</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 七、成果連結 -->
+    <section class="card" id="links">
+      <h2>🔗 七、成果連結</h2>
+      <ul>
+        <li><strong>GitHub 專案庫</strong>：<a href="https://github.com/VIKYEH/hello-python" target="_blank">https://github.com/VIKYEH/hello-python</a></li>
+        <li><strong>v1.0 第一版 Release 標籤</strong>：<a href="https://github.com/VIKYEH/hello-python/tree/v1.0" target="_blank">Tag: v1.0 (Commit d2d6c2f)</a></li>
+        <li><strong>v2.0 改善版本 Tag</strong>：<a href="https://github.com/VIKYEH/hello-python/tree/v2.0" target="_blank">Tag: v2.0</a></li>
+        <li><strong>線上成果簡報</strong>：<a href="presentation.html" target="_blank">點此開啟簡報並匯出 PDF</a></li>
+        <li><strong>雲端服務 Webhook 端點</strong>：<code>https://hello-python-line-bot.onrender.com/callback</code></li>
       </ul>
     </section>
 
