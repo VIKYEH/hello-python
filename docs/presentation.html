@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>成果簡報 - LINE Bot AI 智慧助理 (多輪對話記憶改善版)</title>
+  <style>
+    :root {
+      --primary: #06c755;
+      --primary-dark: #059b42;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --accent: #2563eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+      background: #e2e8f0;
+      color: #1e293b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem 1rem;
+    }
+    .print-tip {
+      background: #ffffff;
+      border: 2px solid var(--primary);
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      max-width: 960px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    .print-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .print-btn:hover { background: var(--primary-dark); }
+    .slide {
+      width: 960px;
+      height: 540px; /* 16:9 ratio */
+      background: white;
+      border-radius: 12px;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .slide-header {
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 0.8rem;
+    }
+    .slide-header h2 {
+      font-size: 1.8rem;
+      color: var(--dark);
+      font-weight: 800;
+    }
+    .slide-header p {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin-top: 0.2rem;
+    }
+    .slide-body {
+      flex: 1;
+      padding: 1.2rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .slide-footer {
+      border-top: 1px solid #f1f5f9;
+      padding-top: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+    /* Cover Slide */
+    .cover-slide {
+      background: linear-gradient(135deg, #06c755 0%, #047857 100%);
+      color: white;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem;
+    }
+    .cover-slide h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+    }
+    .cover-slide h3 {
+      font-size: 1.3rem;
+      font-weight: 400;
+      opacity: 0.95;
+      margin-bottom: 2rem;
+    }
+    .cover-meta {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 0.8rem 1.6rem;
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+      font-size: 1rem;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    .box {
+      background: #f8fafc;
+      border-left: 4px solid var(--primary);
+      padding: 1rem 1.2rem;
+      border-radius: 8px;
+    }
+    .box-danger {
+      border-left-color: #ef4444;
+      background: #fef2f2;
+    }
+    .box-info {
+      border-left-color: #3b82f6;
+      background: #eff6ff;
+    }
+    .box h4 {
+      margin-bottom: 0.4rem;
+      font-size: 1.05rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th, td {
+      padding: 0.6rem 0.8rem;
+      border: 1px solid #e2e8f0;
+      text-align: left;
+    }
+    th { background: #f1f5f9; font-weight: bold; }
+    ul { padding-left: 1.4rem; }
+    li { margin-bottom: 0.3rem; }
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+        gap: 0;
+      }
+      .print-tip { display: none; }
+      .slide {
+        width: 100vw;
+        height: 100vh;
+        box-shadow: none;
+        border-radius: 0;
+        page-break-after: always;
+        break-after: page;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="print-tip">
+    <div>
+      <strong>📄 匯出 PDF 教學：</strong>
+      點擊右側按鈕或按快捷鍵 <code>Ctrl + P</code>，列印目標選擇「<strong>另存為 PDF</strong>」，即可下載為標準 16:9 簡報檔案！
+    </div>
+    <button class="print-btn" onclick="window.print()">🖨️ 另存為 PDF 簡報</button>
+  </div>
+
+  <!-- Slide 1: 封面 -->
+  <div class="slide cover-slide">
+    <h1>LINE Bot AI 智慧助理</h1>
+    <h3>基於 Gemini Chat API 的多輪對話記憶與雲端部署改善</h3>
+    <div class="cover-meta">
+      <p>專題學生：<strong>VIKYEH</strong> ｜ 繳交日期：2026 年 10 月</p>
+      <p style="margin-top: 0.3rem; font-size: 0.88rem; opacity: 0.9;">GitHub: github.com/VIKYEH/hello-python</p>
+    </div>
+  </div>
+
+  <!-- Slide 2: 第一版回顧 -->
+  <div class="slide">
+    <div class="slide-header">
+      <h2>1. 第一版 (v1.0) 基礎成果</h2>
+      <p>完成現代化 LINE Bot 基礎架構與雲端部署</p>
+    </div>
+    <div class="slide-body">
+      <div class="card-grid">
+        <div class="box">
+          <h4>🛡️ 核心安全性</h4>
+          <p>採用官方最新 <code>line-bot-sdk v3</code> 與 Flask，嚴格檢驗 <code>X-Line-Signature</code> HMAC 數位簽章。</p>
+        </div>
+        <div class="box">
+          <h4>⚡ 系統指令秒回</h4>
+          <p>內建 <code>/help</code>、<code>/time</code>、<code>/ping</code> 指令，不耗損外部 API 額度即可快速回應。</p>
+        </div>
+        <div class="box">
+          <h4>🧠 Gemini AI 串接</h4>
+          <p>成功整合 Google Gemini 3.7 Flash 模型，擺脫死板回音模式，具備繁體中文問答能力。</p>
+        </div>
+        <div class="box">
+          <h4>☁️ 24H 雲端上線</h4>
+          <p>完整部署於 Render 雲端平台，具備永久 HTTPS 網址，無需依賴本地電腦開機。</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>第一版 Commit: d2d6c2f (Tag: v1.0)</span>
+      <span>2 / 6</span>
+    </div>
+  </div>
+
+  <!-- Slide 3: 原本的問題 -->
+  <div class="slide">
+    <div class="slide-header">
+      <h2>2. 原本的問題 (Original Problem)</h2>
+      <p>深入分析第一版使用過程中的核心限制</p>
+    </div>
+    <div class="slide-body">
+      <div class="box-danger" style="margin-bottom: 1.2rem;">
+        <h4>⚠️ 核心痛點：單次請求無狀態（Stateless），缺乏上下文記憶</h4>
+        <p>第一版採用 <code>models.generate_content</code> 獨立呼叫，每一則訊息回答完後立即遺忘。</p>
+      </div>
+      <ul>
+        <li><strong>無法解析代名詞與關聯詞</strong>：如問「台灣首都在哪？」→「台北」；再問「那裡有什麼好吃的？」，AI 無法知道「那裡」指台北。</li>
+        <li><strong>深度引導中斷</strong>：無法進行多步驟討論（如規劃行程、除錯程式碼），對話每換一句就重新開局。</li>
+        <li><strong>使用者體驗受損</strong>：在即時通訊軟體（LINE）中，使用者習慣自然連續對話，無法記憶顯得生硬。</li>
+      </ul>
+    </div>
+    <div class="slide-footer">
+      <span>改善動機與問題分析</span>
+      <span>3 / 6</span>
+    </div>
+  </div>
+
+  <!-- Slide 4: 改善內容 -->
+  <div class="slide">
+    <div class="slide-header">
+      <h2>3. 改善內容與技術架構 (v2.0)</h2>
+      <p>引入 Gemini Chat Session 與使用者獨立 Session 隔離管理</p>
+    </div>
+    <div class="slide-body">
+      <div class="card-grid">
+        <div class="box-info">
+          <h4>💬 多輪對話記憶機制</h4>
+          <p>改用 <code>client.chats.create()</code> 與 <code>chat.send_message()</code>，保留整段對話歷史，使 AI 能精準理解前文脈絡。</p>
+        </div>
+        <div class="box-info">
+          <h4>👥 依 LINE User ID 獨立隔離</h4>
+          <p>以 <code>event.source.user_id</code> 為 Key 建立每位好友專屬的 Session 字典，多名用戶同時聊天互不干擾、不混淆。</p>
+        </div>
+        <div class="box-info">
+          <h4>🔄 新增 /reset 快捷指令</h4>
+          <p>讓使用者能主動清空記憶，隨時開啟全新話題，兼顧靈活性與控制權。</p>
+        </div>
+        <div class="box-info">
+          <h4>🛡️ 多模型平滑降級備援</h4>
+          <p>內建 gemini-3.7-flash → 3.5-flash → 3.8-flash 備援防護，尖峰時刻自動切換，永不斷線。</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>架構改良細節 (handlers/ai_service.py)</span>
+      <span>4 / 6</span>
+    </div>
+  </div>
+
+  <!-- Slide 5: 前後差異對照 -->
+  <div class="slide">
+    <div class="slide-header">
+      <h2>4. 改善前後差異對照</h2>
+      <p>功能架構與真實對話體驗之實質躍進</p>
+    </div>
+    <div class="slide-body">
+      <table>
+        <thead>
+          <tr>
+            <th>比較維度</th>
+            <th>第一版 (v1.0)</th>
+            <th>改善後版本 (v2.0)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>呼叫架構</strong></td>
+            <td><code>generate_content</code>（無狀態）</td>
+            <td><code>client.chats.create</code>（多輪 Chat Session）</td>
+          </tr>
+          <tr>
+            <td><strong>上下文理解</strong></td>
+            <td>❌ 無法理解代名詞、前言不對後語</td>
+            <td>✅ <strong>精準理解代名詞（它/他/那裡）、多步驟追問</strong></td>
+          </tr>
+          <tr>
+            <td><strong>對話隔離</strong></td>
+            <td>無狀態因此無隔離</td>
+            <td>✅ <strong>依 user_id 建立獨立記憶空間</strong></td>
+          </tr>
+          <tr>
+            <td><strong>記憶控制</strong></td>
+            <td>無</td>
+            <td>✅ <strong>提供 <code>/reset</code> 指令一鍵重新開局</strong></td>
+          </tr>
+          <tr>
+            <td><strong>對話範例</strong></td>
+            <td>問：剛剛我是誰？<br>答：我不清楚你是誰。</td>
+            <td>問：剛剛我是誰？<br>答：<strong>你是剛才說住在台北的小宇！😊</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="slide-footer">
+      <span>前後差異與使用者體驗升級</span>
+      <span>5 / 6</span>
+    </div>
+  </div>
+
+  <!-- Slide 6: 重新測試結果與實測證明 -->
+  <div class="slide">
+    <div class="slide-header">
+      <h2>5. 重新測試結果與實測證明</h2>
+      <p>單元測試 100% 通過與線上即時連線實證</p>
+    </div>
+    <div class="slide-body">
+      <div class="box" style="margin-bottom: 1rem; border-left-color: #06c755;">
+        <h4>🧪 自動化單元測試結果：4 / 4 PASSED (100%)</h4>
+        <p>包含健康檢查端點、缺簽章阻擋、偽造簽章阻擋、指令與重設記憶邏輯測試。</p>
+      </div>
+      <div class="card-grid">
+        <div class="box">
+          <h4>📱 LINE 真機對話實測證明</h4>
+          <p>實測多輪詢問居住地與美食推薦，AI 連貫應答並準確回顧前文；執行 <code>/reset</code> 後確認歷史清空，邏輯嚴謹。</p>
+        </div>
+        <div class="box">
+          <h4>🌐 雲端連線實測證明</h4>
+          <p>Render 雲端服務持續 Live 運作中，LINE Developers Console Webhook 驗證通過（Success）。</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">
+      <span>GitHub 專案：VIKYEH/hello-python ｜ Commit: 1087193 (Tag: v2.0)</span>
+      <span>6 / 6</span>
+    </div>
+  </div>
+
+</body>
+</html>
