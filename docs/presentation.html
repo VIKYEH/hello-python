@@ -10,7 +10,6 @@
       --primary-dark: #059b42;
       --dark: #0f172a;
       --light: #f8fafc;
-      --accent: #2563eb;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -44,9 +43,7 @@
       font-size: 1rem;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.2s;
     }
-    .print-btn:hover { background: var(--primary-dark); }
     .slide {
       width: 960px;
       height: 540px; /* 16:9 ratio */
@@ -58,101 +55,79 @@
       flex-direction: column;
       justify-content: space-between;
       position: relative;
-      overflow: hidden;
     }
     .slide-header {
       border-bottom: 2px solid #e2e8f0;
       padding-bottom: 0.6rem;
     }
     .slide-header h2 {
-      font-size: 1.75rem;
+      font-size: 1.7rem;
       color: var(--dark);
       font-weight: 800;
     }
     .slide-header p {
       font-size: 0.95rem;
       color: #64748b;
-      margin-top: 0.15rem;
+      margin-top: 0.2rem;
     }
     .slide-body {
       flex: 1;
-      padding: 1rem 0;
+      padding: 1.2rem 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      font-size: 1rem;
-      line-height: 1.55;
+      font-size: 1.05rem;
+      line-height: 1.6;
     }
     .slide-footer {
       border-top: 1px solid #f1f5f9;
       padding-top: 0.4rem;
       display: flex;
       justify-content: space-between;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: #94a3b8;
-    }
-    .cover-slide {
-      background: linear-gradient(135deg, #06c755 0%, #047857 100%);
-      color: white;
-      justify-content: center;
-      text-align: center;
-      padding: 3rem;
-    }
-    .cover-slide h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 0.6rem;
-    }
-    .cover-slide h3 {
-      font-size: 1.25rem;
-      font-weight: 400;
-      opacity: 0.95;
-      margin-bottom: 1.8rem;
-    }
-    .cover-meta {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.15);
-      padding: 0.8rem 1.6rem;
-      border-radius: 10px;
-      backdrop-filter: blur(5px);
-      font-size: 0.98rem;
     }
     .card-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+      gap: 1.2rem;
     }
     .box {
       background: #f8fafc;
       border-left: 4px solid var(--primary);
-      padding: 0.9rem 1.1rem;
+      padding: 1rem 1.2rem;
       border-radius: 8px;
-    }
-    .box-info {
-      border-left-color: #3b82f6;
-      background: #eff6ff;
     }
     .box-danger {
       border-left-color: #ef4444;
       background: #fef2f2;
     }
+    .box-info {
+      border-left-color: #3b82f6;
+      background: #eff6ff;
+    }
+    .box-success {
+      border-left-color: #06c755;
+      background: #f0fdf4;
+    }
     .box h4 {
-      margin-bottom: 0.3rem;
-      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      font-size: 1.1rem;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.88rem;
+      font-size: 0.92rem;
+      margin-top: 0.4rem;
     }
     th, td {
-      padding: 0.5rem 0.7rem;
+      padding: 0.6rem 0.8rem;
       border: 1px solid #e2e8f0;
       text-align: left;
     }
     th { background: #f1f5f9; font-weight: bold; }
-    ul { padding-left: 1.3rem; }
-    li { margin-bottom: 0.25rem; }
+    ul { padding-left: 1.4rem; }
+    li { margin-bottom: 0.3rem; }
     @media print {
       body {
         background: none;
@@ -181,180 +156,184 @@
     <button class="print-btn" onclick="window.print()">🖨️ 匯出 PDF 簡報</button>
   </div>
 
-  <!-- Page 1: 專題名稱、使用對象與想解決的問題 -->
+  <!-- 第 1 頁：專題名稱、使用對象與想解決的問題 -->
   <div class="slide">
     <div class="slide-header">
-      <h2>1. 專題名稱、使用對象與想解決的問題</h2>
-      <p>專題名稱：LINE Bot AI 智慧助理（果斷極速決策改善版）</p>
+      <h2>第 1 頁：專題介紹與想解決的問題</h2>
+      <p>專題名稱：LINE 決策小幫手（AI 改善版）</p>
     </div>
     <div class="slide-body">
       <div class="card-grid">
         <div class="box">
-          <h4>🎯 專題定位與使用對象</h4>
+          <h4>👤 這給誰用？在什麼情境用？</h4>
           <ul>
-            <li><strong>使用對象</strong>：經常面臨「選擇障礙」的學生、上班族與 LINE 用戶。</li>
-            <li><strong>應用場景</strong>：隨手決定「晚餐吃什麼」、即時諮詢，拒絕長篇廢話。</li>
+            <li><strong>使用對象</strong>：每天為了「晚餐要吃什麼」想破頭的選擇障礙者。</li>
+            <li><strong>使用情境</strong>：不用下載新 App，直接用平常用的 LINE 隨手問，讓它幫忙拿主意。</li>
           </ul>
         </div>
         <div class="box box-danger">
-          <h4>⚠️ 解決第一版的真實致命缺點</h4>
+          <h4>❌ 第一版做完後發現的問題</h4>
           <ul>
-            <li><strong>痛點 1（回太慢）</strong>：原本 AI 生成耗時超過 12 秒，在 LINE 等到不耐煩。</li>
-            <li><strong>痛點 2（話太多、不決策）</strong>：請 AI 決定晚餐，卻條列 5 項清單反問使用者自己選！</li>
+            <li><strong>等太久</strong>：傳出訊息後要等 12 秒才回，太慢了！</li>
+            <li><strong>廢話太多</strong>：問它吃什麼，它列了 5 大項清單反問我要吃哪樣，根本沒幫我做決定！</li>
           </ul>
         </div>
       </div>
-      <div class="box" style="margin-top: 0.9rem; border-left-color: #06c755;">
-        <h4>🚀 改善版核心：0.7 秒極速秒回 + 霸氣唯一決策</h4>
-        <p>切換為 <code>gemini-flash-lite-latest</code> 模型，嚴格限制 1~2 句話內直球對決，當尋求選擇時直接給出【唯一最佳答案】，省時又爽快！</p>
+      <div class="box box-success" style="margin-top: 1rem;">
+        <h4>🎯 這次改善的目標</h4>
+        <p>把機器人改成<strong>「秒回（不到 1 秒鐘）」</strong>、<strong>「話少直接」</strong>，而且問它吃什麼時，<strong>直接霸氣選出一個答案</strong>，不給一堆選項、不反問！</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>開發者：VIKYEH ｜ GitHub: github.com/VIKYEH/hello-python</span>
-      <span>1 / 5</span>
+      <span>學生：VIKYEH ｜ GitHub: github.com/VIKYEH/hello-python</span>
+      <span>第 1 頁 / 共 5 頁</span>
     </div>
   </div>
 
-  <!-- Page 2: 核心功能與對話範例 -->
+  <!-- 第 2 頁：核心功能與對話範例 -->
   <div class="slide">
     <div class="slide-header">
-      <h2>2. 核心功能與對話範例</h2>
-      <p>0.7 秒秒回、乾脆話少、果斷二擇一/唯一拍板</p>
+      <h2>第 2 頁：核心功能與真實對話範例</h2>
+      <p>乾脆俐落、秒回、果斷幫你做決定</p>
     </div>
     <div class="slide-body">
       <div class="card-grid">
         <div class="box">
-          <h4>🤖 核心改善特色</h4>
+          <h4>✨ 機器人的四大功能</h4>
           <ul>
-            <li><strong>極速 0.7 秒秒回</strong>：徹底消除等待延遲，即時對話體驗極佳。</li>
-            <li><strong>果斷替你做決定</strong>：不再拋回清單反問，直接指定唯一答案。</li>
-            <li><strong>言簡意賅</strong>：嚴格限制 1~2 句話內講完，零廢話。</li>
-            <li><strong>多輪記憶與防呆</strong>：支援 <code>/reset</code> 重設與空白輸入提示。</li>
+            <li><strong>果斷決定</strong>：問吃什麼或去哪，直接給一個答案。</li>
+            <li><strong>極速秒回</strong>：0.7 秒內回答，不用在手機前乾等。</li>
+            <li><strong>記得上下文</strong>：記得上一句聊了什麼，可以接話。</li>
+            <li><strong>實用指令</strong>：<code>/help</code>（說明）、<code>/reset</code>（重啟話題）。</li>
           </ul>
         </div>
-        <div class="box box-info" style="font-size: 0.9rem;">
-          <h4>📱 真實對話對比</h4>
-          <p><strong>問</strong>：幫我決定晚餐吃什麼？</p>
-          <p style="color: #ef4444; text-decoration: line-through;">舊版 (12秒)：以下為您推薦5樣台北小吃：1.滷肉飯 2.蚵仔煎...你偏好哪種？</p>
-          <p style="color: #166534; font-weight: bold; margin-top: 0.4rem;">
-            新版 (0.76秒)：今晚吃牛肉麵！🍜 直截了當，不用謝。
+        <div class="box box-info">
+          <h4>📱 真實對話範例（手機截圖紀錄）</h4>
+          <p><strong>我</strong>：幫我決定晚餐吃什麼</p>
+          <p style="color: #059b42; font-weight: bold;">
+            <strong>機器人</strong>：今晚吃牛肉麵！🍜 直截了當，不用謝。<br>
+            <span style="font-size: 0.82rem; color: #64748b;">（耗時 0.76 秒秒回，話少且直接給答案）</span>
           </p>
-          <p style="margin-top: 0.3rem;"><strong>問</strong>：那飲料要配什麼？<br><strong>答</strong>：無糖四季春微冰！清爽解膩首選。🧋</p>
+          <hr style="margin: 0.5rem 0; border: none; border-top: 1px dashed #cbd5e1;">
+          <p><strong>我</strong>：那飲料要配什麼？</p>
+          <p style="color: #059b42; font-weight: bold;">
+            <strong>機器人</strong>：無糖四季春微冰！清爽解膩首選。🧋
+          </p>
         </div>
       </div>
     </div>
     <div class="slide-footer">
-      <span>核心功能與對話範例 ｜ 改善版 v2.0</span>
-      <span>2 / 5</span>
+      <span>核心功能展示 ｜ 改善版 v2.0</span>
+      <span>第 2 頁 / 共 5 頁</span>
     </div>
   </div>
 
-  <!-- Page 3: 實際操作與測試結果 (三大情境) -->
+  <!-- 第 3 頁：實際操作與測試結果 (三大情境) -->
   <div class="slide">
     <div class="slide-header">
-      <h2>3. 實際操作與測試結果（三大情境實測）</h2>
-      <p>親自實測三大情境：正常使用、輸入不完整、不支援的輸入</p>
+      <h2>第 3 頁：實際測試結果（三大情境測試）</h2>
+      <p>親自測試正常使用、輸入不完整、不支援的指令</p>
     </div>
     <div class="slide-body">
       <table>
         <thead>
           <tr>
             <th>測試情境</th>
-            <th>輸入內容</th>
-            <th>預期結果</th>
-            <th>實際結果</th>
+            <th>我在 LINE 輸入什麼</th>
+            <th>我原本預期的結果</th>
+            <th>機器人實際的回應</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>1. 正常使用</strong><br>(果斷決策與多輪記憶)</td>
-            <td>「幫我決定晚餐吃什麼」</td>
-            <td>1 秒內直接指定唯一餐點，不列清單、話少俐落</td>
-            <td>✅「今晚吃牛肉麵！🍜 直截了當，不用謝。」（耗時 0.76 秒）</td>
+            <td><strong>情境 1：正常使用</strong><br>(果斷決定晚餐)</td>
+            <td>幫我決定晚餐吃什麼</td>
+            <td>不到 1 秒內回覆，直接給出一個晚餐，不給清單</td>
+            <td>✅ 回：「今晚吃牛肉麵！🍜 直截了當，不用謝。」（0.76 秒秒回）</td>
           </tr>
           <tr>
-            <td><strong>2. 輸入不完整</strong><br>(空白訊息防呆)</td>
+            <td><strong>情境 2：輸入不完整</strong><br>(按到空白鍵)</td>
             <td>傳送純空格 <code>"   "</code></td>
-            <td>提示內容空白，提醒補充問題或輸入 <code>/help</code></td>
-            <td>✅ 回覆：「⚠️ 提示：您輸入的訊息內容是空白的，請輸入想詢問的問題...」</td>
+            <td>提醒我有打跟沒打一樣，叫我輸入想問的事</td>
+            <td>✅ 回：「⚠️ 提示：您輸入的訊息內容是空白的，請輸入想詢問的問題...」</td>
           </tr>
           <tr>
-            <td><strong>3. 不支援的輸入</strong><br>(未知指令引導)</td>
-            <td>傳送未知指令 <code>/weather</code></td>
-            <td>告知指令不支援，並列出可用的支援指令清單</td>
-            <td>✅ 回覆：「⚠️ 不支援的指令：/weather，目前支援...」</td>
+            <td><strong>情境 3：不支援的輸入</strong><br>(亂打指令)</td>
+            <td>輸入 <code>/weather</code></td>
+            <td>提醒我不支援這個指令，並告訴我有哪些指令可用</td>
+            <td>✅ 回：「⚠️ 不支援的指令：/weather，目前支援的指令有：/help、/time...」</td>
           </tr>
         </tbody>
       </table>
-      <p style="margin-top: 0.6rem; font-size: 0.85rem; color: #166534; font-weight: bold;">
-        🧪 自動化單元測試：pytest tests/ -v 取得 6 / 6 PASSED (100% 通過)
+      <p style="margin-top: 0.8rem; font-size: 0.9rem; color: #166534; font-weight: bold;">
+        🧪 自動化測試結果：透過 pytest 測試 6 個項目全部 PASS 通過！
       </p>
     </div>
     <div class="slide-footer">
-      <span>三大情境實測表 ｜ 驗證真實有效</span>
-      <span>3 / 5</span>
+      <span>三大情境測試表格 ｜ 成果證明</span>
+      <span>第 3 頁 / 共 5 頁</span>
     </div>
   </div>
 
-  <!-- Page 4: AI 如何協助，以及你如何檢查或修正 -->
+  <!-- 第 4 頁：AI 如何協助，以及你如何檢查或修正 -->
   <div class="slide">
     <div class="slide-header">
-      <h2>4. AI 如何協助，以及如何檢查與修正</h2>
-      <p>說明 AI Agent 工具使用歷程與關鍵性能/風格調優經驗</p>
+      <h2>第 4 頁：AI 怎麼幫忙？我又怎麼檢查修正？</h2>
+      <p>真實協作過程：從發現問題到修正 AI 的經驗</p>
     </div>
     <div class="slide-body">
-      <div class="box" style="margin-bottom: 0.8rem;">
-        <h4>🛠️ AI 協助的環節</h4>
-        <p>運用 <strong>Antigravity AI Agent</strong> 進行架構設計、實作 LINE SDK v3 簽章防護、撰寫 pytest 自動化測試，並進行多模型 Benchmark 速度評測。</p>
-      </div>
-      <div class="box box-info">
-        <h4>🔍 真實檢查與修正 AI 產出的經驗</h4>
-        <ul>
-          <li><strong>問題發生</strong>：AI 原先產出的程式碼採用 <code>gemini-3.7-flash</code> 且輸出上限高達 1500 字，造成伺服器需思考 12 秒以上才擠出一長串說教式清單，使用者體驗極差。</li>
-          <li><strong>檢查與修正</strong>：我立刻進行實測 Benchmark，指導 AI 切換至極速低延遲的 <strong><code>gemini-flash-lite-latest</code></strong> 模型，並嚴格將 Token 限制於 150，在 Prompt 寫死「禁止廢話、禁止列清單、直接給唯一答案」，成功讓耗時從 12.6 秒降到 <strong>0.76 秒</strong>！</li>
-        </ul>
+      <div class="card-grid">
+        <div class="box">
+          <h4>🤖 AI 在哪裡幫上忙？</h4>
+          <ul>
+            <li>幫忙撰寫 Python 程式碼與 LINE Webhook 連線。</li>
+            <li>幫忙串接 Google 的 AI 大腦來回答問題。</li>
+            <li>幫忙把程式碼部署到雲端（Render），24 小時開著。</li>
+          </ul>
+        </div>
+        <div class="box box-info">
+          <h4>🔍 我怎麼檢查並修正 AI 產出的？</h4>
+          <ul>
+            <li><strong>我發現問題</strong>：我親自在 LINE 測試時，發現回覆要等整整 12 秒，而且請它決定晚餐，它卻丟給我 5 個選項要我自己選，話太多很囉唆。</li>
+            <li><strong>我的修正行動</strong>：我要求 AI 換成更輕快的小模型（Flash-Lite），並且嚴格下指令：「只能回 1~2 句話，而且一定要直接幫我挑出一個答案」。修改後成功壓到 0.7 秒秒回！</li>
+          </ul>
+        </div>
       </div>
     </div>
     <div class="slide-footer">
-      <span>AI 協作與真實問題排查紀錄</span>
-      <span>4 / 5</span>
+      <span>真實除錯與測試經驗分享</span>
+      <span>第 4 頁 / 共 5 頁</span>
     </div>
   </div>
 
-  <!-- Page 5: 心得、限制、改善前後差異與下一步（含線上繳交資訊） -->
+  <!-- 第 5 頁：心得、限制與成果繳交資訊 -->
   <div class="slide">
     <div class="slide-header">
-      <h2>5. 心得、限制與成果繳交資訊</h2>
-      <p>專案總結、架構演進與成果網址清單</p>
+      <h2>第 5 頁：心得、限制與作業繳交資訊</h2>
+      <p>專案總結、未來改善方向與成果連結清單</p>
     </div>
     <div class="slide-body">
-      <div class="card-grid" style="margin-bottom: 0.7rem;">
-        <div class="box" style="font-size: 0.85rem;">
-          <h4>💡 心得與已知限制</h4>
-          <ul>
-            <li><strong>收穫</strong>：深刻理解 AI 對話設計中「低延遲（速度）」與「乾脆決策」往往比寫長篇作文更符合真實人性。</li>
-            <li><strong>限制</strong>：目前 Session 記憶儲存在記憶體中，未來可擴充 Redis 持久化儲存。</li>
-          </ul>
+      <div class="card-grid" style="margin-bottom: 0.8rem;">
+        <div class="box">
+          <h4>💡 這次學到了什麼？</h4>
+          <p>做 AI 機器人不是回答寫得越長越好，而是要<strong>「回得快」</strong>、<strong>「話講在重點上」</strong>。能真正幫人節省時間的工具才實用！</p>
         </div>
-        <div class="box box-info" style="font-size: 0.85rem;">
-          <h4>📈 改善前後差異 (v1.0 vs v2.0)</h4>
-          <ul>
-            <li><strong>v1.0 (Commit d2d6c2f)</strong>：耗時 12 秒，廢話清單多，無法決策。</li>
-            <li><strong>v2.0 (Commit c7bde51)</strong>：<strong>0.7 秒秒回、話少俐落、果斷直接決定唯一答案</strong>。</li>
-          </ul>
+        <div class="box">
+          <h4>⚠️ 目前有哪些限制？</h4>
+          <p>目前聊天記憶存在暫存記憶體裡，如果雲端伺服器重新啟動，記憶會被重置，未來可以串接資料庫讓記憶永久保存。</p>
         </div>
       </div>
-      <div class="box" style="background: #f0fdf4; border-left-color: #06c755; font-size: 0.85rem;">
-        <h4>📋 線上文字繳交資訊彙整</h4>
-        <p><strong>專題名稱</strong>：LINE Bot AI 智慧助理（果斷極速決策改善版）<br>
+      <div class="box box-success" style="font-size: 0.9rem;">
+        <h4>📋 作業線上繳交文字資訊</h4>
+        <p><strong>專題名稱</strong>：LINE 決策小幫手（AI 改善版）<br>
         <strong>GitHub 專案連結</strong>：https://github.com/VIKYEH/hello-python<br>
         <strong>開發紀錄網頁連結</strong>：https://vikyeh.github.io/hello-python/<br>
-        <strong>實測證明位置</strong>：開發紀錄網頁中「五、重新測試結果（實測證明）」章節</p>
+        <strong>實測證明位置</strong>：開發紀錄網頁「五、重新測試結果」段落（含三大情境表格與秒回證明）</p>
       </div>
     </div>
     <div class="slide-footer">
       <span>Tag: v1.0 (第一版) ｜ Tag: v2.0 (改善版)</span>
-      <span>5 / 5</span>
+      <span>第 5 頁 / 共 5 頁</span>
     </div>
   </div>
 
