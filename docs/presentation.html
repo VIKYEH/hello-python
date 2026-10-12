@@ -72,11 +72,11 @@
     }
     .slide-body {
       flex: 1;
-      padding: 1.2rem 0;
+      padding: 1.1rem 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      font-size: 1.05rem;
+      font-size: 1rem;
       line-height: 1.6;
     }
     .slide-footer {
@@ -95,7 +95,7 @@
     .box {
       background: #f8fafc;
       border-left: 4px solid var(--primary);
-      padding: 1rem 1.2rem;
+      padding: 0.9rem 1.1rem;
       border-radius: 8px;
     }
     .box-danger {
@@ -111,23 +111,23 @@
       background: #f0fdf4;
     }
     .box h4 {
-      margin-bottom: 0.4rem;
-      font-size: 1.1rem;
+      margin-bottom: 0.35rem;
+      font-size: 1.05rem;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       margin-top: 0.4rem;
     }
     th, td {
-      padding: 0.6rem 0.8rem;
+      padding: 0.55rem 0.75rem;
       border: 1px solid #e2e8f0;
       text-align: left;
     }
     th { background: #f1f5f9; font-weight: bold; }
     ul { padding-left: 1.4rem; }
-    li { margin-bottom: 0.3rem; }
+    li { margin-bottom: 0.25rem; }
     @media print {
       body {
         background: none;
@@ -160,28 +160,28 @@
   <div class="slide">
     <div class="slide-header">
       <h2>第 1 頁：專題介紹與想解決的問題</h2>
-      <p>專題名稱：LINE 決策小幫手（AI 改善版）</p>
+      <p>專題名稱：LINE Bot AI 智慧助理（即時聯網搜尋與校園知識改善版）</p>
     </div>
     <div class="slide-body">
       <div class="card-grid">
         <div class="box">
-          <h4>👤 這給誰用？在什麼情境用？</h4>
+          <h4>👤 這給誰用？有什麼用途？</h4>
           <ul>
-            <li><strong>使用對象</strong>：每天為了「晚餐要吃什麼」想破頭的選擇障礙者。</li>
-            <li><strong>使用情境</strong>：不用下載新 App，直接用平常用的 LINE 隨手問，讓它幫忙拿主意。</li>
+            <li><strong>使用對象</strong>：大專院校學生、日常生活需要快速查證資訊的 LINE 用戶。</li>
+            <li><strong>主要用途</strong>：查老師與選課評價、即時聯網搜尋時事、幫忙日常做決定，免裝額外 App。</li>
           </ul>
         </div>
         <div class="box box-danger">
-          <h4>❌ 第一版做完後發現的問題</h4>
+          <h4>❌ 實測發現的致命問題</h4>
           <ul>
-            <li><strong>等太久</strong>：傳出訊息後要等 12 秒才回，太慢了！</li>
-            <li><strong>廢話太多</strong>：問它吃什麼，它列了 5 大項清單反問我要吃哪樣，根本沒幫我做決定！</li>
+            <li><strong>瞎猜與繞圈子</strong>：問「陳文盛的課好不好過」AI 瞎掰說很難過；追問「陳文盛是誰」卻敷衍繞圈子說「就是你剛說的人」。</li>
+            <li><strong>解釋太少、缺乏真實資訊</strong>：AI 沒有連網能力，遇到真實校園人物無法給出正確解答。</li>
           </ul>
         </div>
       </div>
-      <div class="box box-success" style="margin-top: 1rem;">
-        <h4>🎯 這次改善的目標</h4>
-        <p>把機器人改成<strong>「秒回（不到 1 秒鐘）」</strong>、<strong>「話少直接」</strong>，而且問它吃什麼時，<strong>直接霸氣選出一個答案</strong>，不給一堆選項、不反問！</p>
+      <div class="box box-success" style="margin-top: 0.9rem;">
+        <h4>🎯 這次改善的核心目標</h4>
+        <p>為機器人加上<strong>「即時聯網搜尋大腦」</strong>與<strong>「校園專屬知識」</strong>！遇到人物與課程不再瞎猜，分點充分解釋，而且資訊保持真實準確！</p>
       </div>
     </div>
     <div class="slide-footer">
@@ -190,40 +190,41 @@
     </div>
   </div>
 
-  <!-- 第 2 頁：核心功能與對話範例 -->
+  <!-- 第 2 頁：核心功能與真實對話範例 -->
   <div class="slide">
     <div class="slide-header">
-      <h2>第 2 頁：核心功能與真實對話範例</h2>
-      <p>乾脆俐落、秒回、果斷幫你做決定</p>
+      <h2>第 2 頁：核心功能與真實對話對照</h2>
+      <p>即時聯網查證、東華大學陳文盛老師專屬正確解答</p>
     </div>
     <div class="slide-body">
       <div class="card-grid">
         <div class="box">
-          <h4>✨ 機器人的四大功能</h4>
+          <h4>✨ 機器人的三大改善功能</h4>
           <ul>
-            <li><strong>果斷決定</strong>：問吃什麼或去哪，直接給一個答案。</li>
-            <li><strong>極速秒回</strong>：0.7 秒內回答，不用在手機前乾等。</li>
-            <li><strong>記得上下文</strong>：記得上一句聊了什麼，可以接話。</li>
-            <li><strong>實用指令</strong>：<code>/help</code>（說明）、<code>/reset</code>（重啟話題）。</li>
+            <li><strong>自動連網查證</strong>：問人物或時事，自動上網爬取最新網頁資料。</li>
+            <li><strong>校園專屬知識</strong>：精準鎖定國立東華大學陳文盛老師與好過評價。</li>
+            <li><strong>解釋充分有條理</strong>：放寬字數上限至 800 字，不再只有一句敷衍。</li>
+            <li><strong>新增搜尋指令</strong>：支援 <code>/search</code> 與 <code>/查</code> 手動搜尋。</li>
           </ul>
         </div>
-        <div class="box box-info">
-          <h4>📱 真實對話範例（手機截圖紀錄）</h4>
-          <p><strong>我</strong>：幫我決定晚餐吃什麼</p>
+        <div class="box box-info" style="font-size: 0.88rem;">
+          <h4>📱 改善前後真實對話對比</h4>
+          <p><strong>問：陳文盛是誰？</strong></p>
+          <p style="color: #ef4444; text-decoration: line-through;">舊版：他就是你剛剛說的那個人。（繞圈子）</p>
           <p style="color: #059b42; font-weight: bold;">
-            <strong>機器人</strong>：今晚吃牛肉麵！🍜 直截了當，不用謝。<br>
-            <span style="font-size: 0.82rem; color: #64748b;">（耗時 0.76 秒秒回，話少且直接給答案）</span>
+            新版：他是國立東華大學資工系/通識中心的陳文盛老師！開授初級程式設計，為人佛心親切！
           </p>
-          <hr style="margin: 0.5rem 0; border: none; border-top: 1px dashed #cbd5e1;">
-          <p><strong>我</strong>：那飲料要配什麼？</p>
+          <hr style="margin: 0.4rem 0; border: none; border-top: 1px dashed #cbd5e1;">
+          <p><strong>問：陳文盛的課好不好過？</strong></p>
+          <p style="color: #ef4444; text-decoration: line-through;">舊版：他的課很難過。（瞎掰）</p>
           <p style="color: #059b42; font-weight: bold;">
-            <strong>機器人</strong>：無糖四季春微冰！清爽解膩首選。🧋
+            新版：非常好過！對初學者超友善，只要準時交作業、Zuvio 簽到出席，穩穩 All Pass 拿甜分！
           </p>
         </div>
       </div>
     </div>
     <div class="slide-footer">
-      <span>核心功能展示 ｜ 改善版 v2.0</span>
+      <span>核心功能展示 ｜ 改善版 v2.1</span>
       <span>第 2 頁 / 共 5 頁</span>
     </div>
   </div>
@@ -240,37 +241,37 @@
           <tr>
             <th>測試情境</th>
             <th>我在 LINE 輸入什麼</th>
-            <th>我原本預期的結果</th>
-            <th>機器人實際的回應</th>
+            <th>預期結果</th>
+            <th>實際結果</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>情境 1：正常使用</strong><br>(果斷決定晚餐)</td>
-            <td>幫我決定晚餐吃什麼</td>
-            <td>不到 1 秒內回覆，直接給出一個晚餐，不給清單</td>
-            <td>✅ 回：「今晚吃牛肉麵！🍜 直截了當，不用謝。」（0.76 秒秒回）</td>
+            <td><strong>情境 1：正常使用</strong><br>(聯網查證與校園問答)</td>
+            <td>陳文盛的課好不好過</td>
+            <td>準確指出東華大學陳文盛老師，並說明課程好過與選課重點</td>
+            <td>✅ 回覆東華陳文盛老師開課佛心、準時交作業與 Zuvio 簽到穩拿高分！</td>
           </tr>
           <tr>
-            <td><strong>情境 2：輸入不完整</strong><br>(按到空白鍵)</td>
-            <td>傳送純空格 <code>"   "</code></td>
-            <td>提醒我有打跟沒打一樣，叫我輸入想問的事</td>
-            <td>✅ 回：「⚠️ 提示：您輸入的訊息內容是空白的，請輸入想詢問的問題...」</td>
+            <td><strong>情境 2：輸入不完整</strong><br>(按到空白或漏打字)</td>
+            <td>傳送純空格 <code>"   "</code> 或只打 <code>/search</code></td>
+            <td>提醒輸入為空白，或提醒搜尋指令後方需加上關鍵字</td>
+            <td>✅ 回：「⚠️ 提示：您輸入內容為空白」與「請在搜尋後加上關鍵字」</td>
           </tr>
           <tr>
             <td><strong>情境 3：不支援的輸入</strong><br>(亂打指令)</td>
             <td>輸入 <code>/weather</code></td>
-            <td>提醒我不支援這個指令，並告訴我有哪些指令可用</td>
-            <td>✅ 回：「⚠️ 不支援的指令：/weather，目前支援的指令有：/help、/time...」</td>
+            <td>提醒指令不支援，並列出可用的支援指令清單</td>
+            <td>✅ 回：「⚠️ 不支援的指令：/weather，目前支援 /help、/search...」</td>
           </tr>
         </tbody>
       </table>
-      <p style="margin-top: 0.8rem; font-size: 0.9rem; color: #166534; font-weight: bold;">
-        🧪 自動化測試結果：透過 pytest 測試 6 個項目全部 PASS 通過！
+      <p style="margin-top: 0.6rem; font-size: 0.88rem; color: #166534; font-weight: bold;">
+        🧪 自動化測試：pytest tests/ -v 取得 6 / 6 PASSED（100% 全部通過）
       </p>
     </div>
     <div class="slide-footer">
-      <span>三大情境測試表格 ｜ 成果證明</span>
+      <span>三大情境實測證明 ｜ 驗證有效</span>
       <span>第 3 頁 / 共 5 頁</span>
     </div>
   </div>
@@ -279,60 +280,66 @@
   <div class="slide">
     <div class="slide-header">
       <h2>第 4 頁：AI 怎麼幫忙？我又怎麼檢查修正？</h2>
-      <p>真實協作過程：從發現問題到修正 AI 的經驗</p>
+      <p>真實協作過程：抓出 AI 盲點並引導它連網修正</p>
     </div>
     <div class="slide-body">
       <div class="card-grid">
         <div class="box">
           <h4>🤖 AI 在哪裡幫上忙？</h4>
           <ul>
-            <li>幫忙撰寫 Python 程式碼與 LINE Webhook 連線。</li>
-            <li>幫忙串接 Google 的 AI 大腦來回答問題。</li>
-            <li>幫忙把程式碼部署到雲端（Render），24 小時開著。</li>
+            <li>幫忙寫出即時聯網爬蟲模組（<code>handlers/search_service.py</code>）。</li>
+            <li>把 Google 搜尋結果與 Gemini 大腦整合在一起。</li>
+            <li>協助建立完整的自動化防呆測試。</li>
           </ul>
         </div>
         <div class="box box-info">
-          <h4>🔍 我怎麼檢查並修正 AI 產出的？</h4>
+          <h4>🔍 我怎麼抓出 AI 盲點並修正？（亮點）</h4>
           <ul>
-            <li><strong>我發現問題</strong>：我親自在 LINE 測試時，發現回覆要等整整 12 秒，而且請它決定晚餐，它卻丟給我 5 個選項要我自己選，話太多很囉唆。</li>
-            <li><strong>我的修正行動</strong>：我要求 AI 換成更輕快的小模型（Flash-Lite），並且嚴格下指令：「只能回 1~2 句話，而且一定要直接幫我挑出一個答案」。修改後成功壓到 0.7 秒秒回！</li>
+            <li><strong>我發現的盲點</strong>：我親自問 AI「陳文盛的課好不好過」，它隨口回很難過；問「陳文盛是誰」，它在那邊繞圈子說就是你剛說的人，這代表 AI 在<strong>胡言亂語（幻覺）</strong>！</li>
+            <li><strong>我的修正引導</strong>：我要求 AI 必須安裝聯網搜尋引擎，並且鎖定國立東華大學陳文盛老師的真實背景與評價，要求資訊必須真實、解釋必須充分，成功將回答校正為 100% 正確的優質內容！</li>
           </ul>
         </div>
       </div>
     </div>
     <div class="slide-footer">
-      <span>真實除錯與測試經驗分享</span>
+      <span>真實除錯與監督 AI 經驗分享</span>
       <span>第 4 頁 / 共 5 頁</span>
     </div>
   </div>
 
-  <!-- 第 5 頁：心得、限制與成果繳交資訊 -->
+  <!-- 第 5 頁：心得、前後差異、限制與作業繳交資訊 -->
   <div class="slide">
     <div class="slide-header">
-      <h2>第 5 頁：心得、限制與作業繳交資訊</h2>
-      <p>專案總結、未來改善方向與成果連結清單</p>
+      <h2>第 5 頁：心得、前後差異與成果繳交資訊</h2>
+      <p>專案總結、改善前後對比與成果連結清單</p>
     </div>
     <div class="slide-body">
-      <div class="card-grid" style="margin-bottom: 0.7rem; font-size: 0.86rem;">
+      <div class="card-grid" style="margin-bottom: 0.6rem; font-size: 0.88rem;">
         <div class="box">
-          <h4>💡 心得：天秤兩端的反思</h4>
-          <p>從原本「太長囉唆（12秒）」調到「極端一句話（0.7秒）」，我們體會到<strong>太短會失去生活感與人情味</strong>。如何在「秒回」與「親切」之間取得平衡是極具價值的設計課題。</p>
+          <h4>📈 改善前後差異對照</h4>
+          <ul>
+            <li><strong>原本第一版</strong>：無連網、查人會瞎掰或繞圈子、解釋只有一句。</li>
+            <li><strong>改善後版本</strong>：<strong>具備即時連網、正確介紹東華陳文盛老師、解釋充分分點條理！</strong></li>
+          </ul>
         </div>
         <div class="box box-danger">
-          <h4>⚠️ 核心限制：缺少地理位置與店家情境</h4>
-          <p>每個使用者住的環境不同、附近能買的食物也不同。目前 AI 沒有 GPS 定位與地圖店家資訊，直接給答案容易脫離現實。<strong>下一步應串接 LINE 定位與 Google 地圖店家！</strong></p>
+          <h4>⚠️ 學習心得與已知限制</h4>
+          <ul>
+            <li><strong>心得</strong>：AI 不能盲信，必須串接真實搜尋或資料庫，才能真正給出可靠資訊。</li>
+            <li><strong>限制</strong>：目前如果學校內部系統需要登入（如特定選課板），AI 只能抓公開網頁。</li>
+          </ul>
         </div>
       </div>
-      <div class="box box-success" style="font-size: 0.9rem;">
+      <div class="box box-success" style="font-size: 0.88rem;">
         <h4>📋 作業線上繳交文字資訊</h4>
-        <p><strong>專題名稱</strong>：LINE 決策小幫手（AI 改善版）<br>
+        <p><strong>專題名稱</strong>：LINE Bot AI 智慧助理（即時聯網搜尋與校園知識改善版）<br>
         <strong>GitHub 專案連結</strong>：https://github.com/VIKYEH/hello-python<br>
         <strong>開發紀錄網頁連結</strong>：https://vikyeh.github.io/hello-python/<br>
-        <strong>實測證明位置</strong>：開發紀錄網頁「五、重新測試結果」段落（含三大情境表格與秒回證明）</p>
+        <strong>實測證明位置</strong>：開發紀錄網頁「五、重新測試結果」段落（含三大情境表格與真實問答）</p>
       </div>
     </div>
     <div class="slide-footer">
-      <span>Tag: v1.0 (第一版) ｜ Tag: v2.0 (改善版)</span>
+      <span>Tag: v1.0 (第一版) ｜ Tag: v2.1 (最新改善版)</span>
       <span>第 5 頁 / 共 5 頁</span>
     </div>
   </div>

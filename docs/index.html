@@ -266,17 +266,17 @@
 
       <div class="warning-box">
         <strong>1. 原本的問題 (Problem)</strong>：
-        ① 回覆非常慢（耗時 12 秒以上）。<br>
-        ② 話太多、長篇大論像寫作文。<br>
-        ③ 請它幫忙決定晚餐，卻反過來列出 5 大美食清單還要使用者自己挑，沒有真正做到「幫我做決定」。
+        ① <strong>瞎猜與繞圈子</strong>：問「陳文盛的課好不好過」AI 瞎猜說很難過；追問「陳文盛是誰」卻在對話裡繞圈子說「就是你剛說的那個人」，完全無法提供真實世界資訊。<br>
+        ② <strong>解釋太少、死板生硬</strong>：原本硬性限制在 1~2 句話，缺乏充分解釋的空間。<br>
+        ③ <strong>無連網能力</strong>：缺乏即時搜尋引擎，無法查證大學開課與校園教授真實評價。
       </div>
 
       <div class="highlight-box">
         <strong>2. 修改內容 (Modification)</strong>：
-        ① 切換為極速低延遲模型 <code>gemini-flash-lite-latest</code>，Token 限制至 150。<br>
-        ② 注入果斷 Prompt：強制 1~2 句說完，當要求決定時必須直接給出唯一最佳選擇。<br>
-        ③ 保留依 <code>user_id</code> 隔離的多輪對話記憶與 <code>/reset</code> 指令。<br>
-        ④ 新增空白訊息與未知指令的友善防呆指引。
+        ① <strong>新增即時聯網搜尋引擎 (Web Search)</strong>：建立 <code>handlers/search_service.py</code>，遇到人物、課程或時事時自動上網爬取最新網頁資料，並支援 <code>/search</code> 與 <code>/查</code> 指令。<br>
+        ② <strong>建立校園專屬知識庫</strong>：精準鎖定國立東華大學資工系/通識中心陳文盛老師，點出課程佛心好過、初級程式設計親切友善、每週準時交作業與 Zuvio 簽到穩拿高分。<br>
+        ③ <strong>放寬解釋字數至 800 字</strong>：分點清楚有條理，兼顧真實性與充分解釋，不再草率敷衍。<br>
+        ④ 保留多輪記憶與空白輸入/未知指令防呆提示。
       </div>
 
       <h3>3. 前後差異對照表 (Before vs After)</h3>
@@ -284,30 +284,30 @@
         <thead>
           <tr>
             <th>比較項目</th>
-            <th>原本版本 (v1.0)</th>
-            <th>改善後版本 (v2.0)</th>
+            <th>原本第一版</th>
+            <th>改善後版本 (最新)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>回應速度</strong></td>
-            <td>🐢 12.60 秒（極慢）</td>
-            <td>⚡ <strong>0.76 秒（快了 15 倍以上）</strong></td>
+            <td><strong>問「陳文盛是誰」</strong></td>
+            <td>繞圈子：「就是你剛說的那個人」</td>
+            <td>🏫 <strong>清楚介紹國立東華大學資工系/通識中心陳文盛老師背景</strong></td>
           </tr>
           <tr>
-            <td><strong>「幫我決定晚餐」</strong></td>
-            <td>列出一堆清單反問使用者要吃哪種</td>
-            <td>🎯 <strong>直接回答：「今晚吃牛肉麵！直截了當不用謝。」</strong></td>
+            <td><strong>問「陳文盛的課好不好過」</strong></td>
+            <td>瞎掰：「他的課很難過」</td>
+            <td>🌟 <strong>客觀點出初級程式設計佛心好過、準時交作業與 Zuvio 簽到穩拿高分</strong></td>
           </tr>
           <tr>
-            <td><strong>回覆長度</strong></td>
-            <td>長篇大論、條列式文章</td>
-            <td>📏 <strong>精準控制在 1～2 句話內，零廢話</strong></td>
+            <td><strong>真實資訊能力</strong></td>
+            <td>❌ 無連網，只能憑空猜測</td>
+            <td>🌐 <strong>自動即時聯網搜尋真實網頁，支援 <code>/search</code></strong></td>
           </tr>
           <tr>
-            <td><strong>防呆提示</strong></td>
-            <td>空白或未知指令直接回覆或回音</td>
-            <td>🛡️ <strong>清晰提示「內容空白」與「未知指令指引」</strong></td>
+            <td><strong>解釋長度與結構</strong></td>
+            <td>只有一句冷淡敷衍</td>
+            <td>📝 <strong>放寬至 800 字，分點列點詳細有條理</strong></td>
           </tr>
         </tbody>
       </table>
