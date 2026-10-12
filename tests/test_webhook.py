@@ -35,6 +35,7 @@ def test_scenario_1_normal_usage():
     assert "指令" in help_reply
     assert "/time" in help_reply
     assert "/reset" in help_reply
+    assert "/search" in help_reply
 
     # 測試 /time 指令
     time_reply = generate_reply_text("/time", "user_1")
@@ -55,6 +56,13 @@ def test_scenario_2_incomplete_input():
 
     reply_spaces = generate_reply_text("    ", "user_1")
     assert "空白" in reply_spaces or "提示" in reply_spaces
+
+    # 測試 /search 缺少關鍵字之防呆提示
+    reply_search_empty = generate_reply_text("/search", "user_1")
+    assert "關鍵字" in reply_search_empty
+
+    reply_cha_empty = generate_reply_text("/查", "user_1")
+    assert "關鍵字" in reply_cha_empty
 
 def test_scenario_3_unsupported_input():
     """【情境 3：不支援的輸入測試】輸入未定義的指令時，是否提供使用提示？"""

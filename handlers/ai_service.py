@@ -2,20 +2,36 @@ import time
 from google import genai
 from google.genai import types
 import config
+from handlers.search_service import search_web
 
 _client = None
 # 以 LINE user_id 為 key，儲存每位使用者的獨立對話 Session
 _chat_sessions: dict = {}
 
-# 果斷明快、極速精簡的系統設定
 SYSTEM_INSTRUCTION = (
-    "你是一位果斷明快、說話俐落的 LINE 個人隨身助理。\n"
-    "【核心原則】：\n"
-    "1. 說話極度精簡，直截了當，嚴格控制在 1 到 2 句話內，絕不廢話、絕不長篇大論！\n"
-    "2. 當使用者請你『幫忙做決定/推薦/選擇』（例如：晚餐吃什麼、去哪裡）：請直接果決地替他選出【唯一一個答案】，絕對不要列出一堆選項或反問他！直球對決！\n"
-    "3. 能記住對話上下文，但回答依然保持簡潔。\n"
-    "4. 使用台灣繁體中文（zh-TW），適度 Emoji。"
+    "你是一位知識淵博、求真求實且親切的 LINE 繁體中文個人智慧助理。\n"
+    "【核心守則】：\n"
+    "1. 資訊求真求實：遇到真實世界的人事物、學校教授、課程、時事或知識性問題時，若有提供即時網路搜尋資料，必須依據真實資訊認真作答，條理分明、分點解說清楚，解釋要充分完整。\n"
+    "2. 嚴禁胡編亂造與敷衍繞圈子：絕不可隨便瞎猜（例如無憑無據亂說某老師很難過）或敷衍回話（例如『就是你剛剛說的那個人』）。如果資料沒有特定主觀評價，請誠實說明該人物/課程的客觀背景，並建議前往該校 Dcard/選課板查詢學長姐真實心得。\n"
+    "3. 遇到日常選擇決策（如：晚餐吃什麼、去哪裡散步）：請維持果斷乾脆的風格，直接給予具體建議，不拋回冗長清單。\n"
+    "4. 使用流暢自然的台灣繁體中文（zh-TW），適度搭配 Emoji 增添親和力。"
 )
+
+SEARCH_TRIGGER_KEYWORDS = [
+    "誰", "哪位", "評價", "好過", "好不好", "甜不甜", "涼不涼",
+    "教授", "老師", "課", "學校", "大學", "系所", "介紹",
+    "新聞", "最新", "查", "搜尋", "多少錢", "歷史", "營業時間",
+    "地址", "怎麼去", "維基", "推薦", "是什麼", "甚麼是", "為什麼"
+]
+
+def should_trigger_search(text: str) -> bool:
+    """判斷使用者提問是否需要啟動即時聯網搜尋"""
+    clean_text = text.strip().lower()
+    # 問號且有一定長度
+    if ("?" in clean_text or "？" in clean_text) and len(clean_text) >= 4:
+        return True
+    # 包含關鍵查詢字詞
+    return any(kw in clean_text for kw in SEARCH_TRIGGER_KEYWORDS)
 
 def get_client() -> genai.Client | None:
     """取得或初始化 Gemini API Client"""
@@ -25,13 +41,13 @@ def get_client() -> genai.Client | None:
     return _client
 
 def create_user_chat(client: genai.Client, model_name: str):
-    """建立超低延遲（極速）且果斷的對話 Session"""
+    """建立具備充分字數上限與求真守則的對話 Session"""
     return client.chats.create(
         model=model_name,
         config=types.GenerateContentConfig(
             system_instruction=SYSTEM_INSTRUCTION,
-            max_output_tokens=150,  # 嚴格限制輸出字數，達到 1 秒內秒回
-            temperature=0.6,
+            max_output_tokens=800,  # 提高字數上限，確保解釋充分完整
+            temperature=0.5,
         )
     )
 
@@ -41,9 +57,8 @@ def get_chat_session(user_id: str):
     if client is None:
         return None
     if user_id not in _chat_sessions:
-        # 優先採用極速低延遲模型 gemini-flash-lite-latest (約 0.7 秒秒回)
         _chat_sessions[user_id] = create_user_chat(client, "gemini-flash-lite-latest")
-        print(f"[AI] 為使用者 {user_id[:8]}... 建立極速對話 Session")
+        print(f"[AI] 為使用者 {user_id[:8]}... 建立智慧對話 Session")
     return _chat_sessions[user_id]
 
 def reset_chat_session(user_id: str) -> bool:
@@ -54,22 +69,39 @@ def reset_chat_session(user_id: str) -> bool:
         return True
     return False
 
-def ask_gemini(user_text: str, user_id: str = "default") -> str:
+def ask_gemini(user_text: str, user_id: str = "default", force_search: bool = False, custom_search_query: str = "") -> str:
     """
     透過 Gemini Chat API 傳送訊息並取得回覆。
-    支援多輪對話記憶、果斷唯一推薦，且於 1 秒內極速秒回。
+    整合即時聯網搜尋引擎，提供精準、客觀且充分詳盡的解答。
     """
     chat = get_chat_session(user_id)
     if chat is None:
         return "抱歉，Gemini AI 尚未正確設定 API Key，暫時無法提供智慧對話功能。"
 
-    # 優先極速 Lite 模型，備援其他 Flash 模型
+    # 判斷是否需要進行聯網搜尋
+    search_context = ""
+    if force_search or should_trigger_search(user_text):
+        search_query = custom_search_query if custom_search_query else user_text
+        print(f"[WebSearch] 啟動即時搜尋: {search_query}")
+        search_results = search_web(search_query, max_results=3)
+        if search_results:
+            search_context = (
+                f"\n\n【即時網路搜尋到的真實參考資料】：\n"
+                f"{search_results}\n"
+                f"請依據上述真實資料，充分且客觀地解答使用者的問題，條理分明、避免瞎猜或敷衍。"
+            )
+
+    message_payload = f"{user_text}{search_context}"
+
     models_to_try = ["gemini-flash-lite-latest", "gemini-3.5-flash-lite", "gemini-3.7-flash"]
 
     for model_name in models_to_try:
         try:
-            response = chat.send_message(user_text)
+            response = chat.send_message(message_payload)
             reply = response.text.strip() if response.text else "沒問題！"
+            # LINE 單則文字上限 5000 字元截斷防護
+            if len(reply) > 4000:
+                reply = reply[:3990] + "\n\n...(因訊息長度上限已截斷)"
             return reply
         except Exception as e:
             print(f"[Gemini 異常 model={model_name}] {e}，切換備援模型...")
@@ -78,11 +110,11 @@ def ask_gemini(user_text: str, user_id: str = "default") -> str:
                 try:
                     chat = create_user_chat(client, model_name)
                     _chat_sessions[user_id] = chat
-                    response = chat.send_message(user_text)
+                    response = chat.send_message(message_payload)
                     if response.text:
                         return response.text.strip()
                 except Exception:
                     pass
             time.sleep(0.3)
 
-    return "今晚吃滷肉飯配熱湯！大推！"
+    return "🤖 AI 助理目前連線稍有延遲，請稍等片刻再試一次！"
